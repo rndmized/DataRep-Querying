@@ -1,0 +1,13 @@
+
+1: https://github.com/rndmized/DataRep-Querying/tree/master/exercise_1
+
+2: curl "http://www.jmarshall.com/easy/http/" > http-easy.html
+
+3: curl -L "http://www.duckduckgo.com" > duckduckgo.html
+
+4:  curl -L "http://www.duckduckgo.com/?q=science" >  science.txt 
+	curl -L "http://www.duckduckgo.com/?q=compuer+science" > computerscience.txt
+
+5: curl -L "http://duckduckgo.com/?q=gmit&format=json&pretty=1" > gmit.json
+
+6: $ mkdir www 
