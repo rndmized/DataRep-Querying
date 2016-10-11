@@ -24,7 +24,7 @@
     </div>
     <div class="container">
         <div class="row text-center">
-            <form method="GET" action="/named/">
+            <form method="POST" action="/">
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Name</span>
                     <input type="text" placeholder="Name" name="id">
@@ -34,9 +34,9 @@
                 </button>
             </form>
         </div>
-    </div>
-    <div class="jumbotron text-center">
-        <h1>Hello, world!</h1>
+        <div class="jumbotron text-center">
+            <h1>{{nameInputed}}</h1>
+        </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
