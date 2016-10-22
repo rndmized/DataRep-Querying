@@ -22,14 +22,18 @@
         <a class="navbar-brand" href="#" id="races">About</a>
     </nav>
     <div>
+      <nav class="navbar navbar-dark bg-inverse">
+        <a class="navbar-brand" href="#" id="elves">Elves</a>
+        <a class="navbar-brand" href="#" id="dwarves">Dwarves</a>
+    </nav>
         <!-- Adapted from: http://v4-alpha.getbootstrap.com/components/forms/#textual-inputs -->
     </div>
-    <div class="container-fluid row">
-        <div class="col-md-1" id="menu">
-            <form>
+    <div class="container row">
+        <div class="col-md-2" id="menu">
+            <!--form>
                 <button type="submit" id="elves" class="btn btn-primary">Elves</button>
                 <button type="submit" id="dwarves" class="btn btn-primary">Dwarves</button>
-            </form>
+            </form-->
         </div>
         <div class="col-md-8" id="mydiv">
         </div>
@@ -45,9 +49,8 @@
             name: "Elves"
         }
         $.post("/race", data, function(resbody) {
-            $('#mydiv').html();
-            elven = JSON.parse(resbody);
-            console.log(elven);
+            $('#mydiv').empty();
+            elven = JSON.parse(resbody);;
             $.each(elven.description, function(i) {
                 $('#mydiv').append('<h1 id="' + 'title' + i + '"></h1>');
                 $('#title' + i).text(elven.description[i].title);
@@ -62,9 +65,8 @@
             name: "Dwarf"
         }
         $.post("/race", data, function(resbody) {
-            $('#mydiv').html();
+            $('#mydiv').empty();
             dwarven = JSON.parse(resbody);
-            console.log(dwarven);
             $.each(dwarven.description, function(i) {
                 $('#mydiv').append('<h1 id="' + 'title' + i + '"></h1>');
                 $('#title' + i).text(dwarven.description[i].title);
