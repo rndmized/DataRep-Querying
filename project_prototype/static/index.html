@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Author: Ian McLoughlin -->
+<!-- Date: October 10th, 2016 -->
+<!-- Originally adapted from: http://v4-alpha.getbootstrap.com/getting-started/introduction/ -->
+<html lang="en">
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+</head>
+
+<body>
+    <img src="/static/swdCoast_Header.jpg" class="img-fluid" alt="DnD Banner">
+    <!-- https://v4-alpha.getbootstrap.com/components/navbar/ -->
+    <nav class="navbar navbar-dark bg-inverse">
+        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="#">Create Character</a>
+        <a class="navbar-brand" href="#" id="races">About</a>
+    </nav>
+    <div>
+        <!-- Adapted from: http://v4-alpha.getbootstrap.com/components/forms/#textual-inputs -->
+    </div>
+    <div class="container-fluid row">
+        <div class="col-md-1" id="menu">
+            <form>
+                <button type="submit" id="elves" class="btn btn-primary">Elves</button>
+                <button type="submit" id="dwarves" class="btn btn-primary">Dwarves</button>
+            </form>
+        </div>
+        <div class="col-md-8" id="mydiv">
+        </div>
+    </div>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
+    <script>
+    $("#elves").click(function(e) {
+        e.preventDefault();
+        data = {
+            name: "Elves"
+        }
+        $.post("/race", data, function(resbody) {
+            $('#mydiv').html();
+            elven = JSON.parse(resbody);
+            console.log(elven);
+            $.each(elven.description, function(i) {
+                $('#mydiv').append('<h1 id="' + 'title' + i + '"></h1>');
+                $('#title' + i).text(elven.description[i].title);
+                $('#mydiv').append('<p id="' + 'desc' + i + '"><>');
+                $('#desc' + i).text(elven.description[i].body);
+            });
+        });
+    });
+    $("#dwarves").click(function(e) {
+        e.preventDefault();
+        data = {
+            name: "Dwarf"
+        }
+        $.post("/race", data, function(resbody) {
+            $('#mydiv').html();
+            dwarven = JSON.parse(resbody);
+            console.log(dwarven);
+            $.each(dwarven.description, function(i) {
+                $('#mydiv').append('<h1 id="' + 'title' + i + '"></h1>');
+                $('#title' + i).text(dwarven.description[i].title);
+                $('#mydiv').append('<p id="' + 'desc' + i + '"><>');
+                $('#desc' + i).text(dwarven.description[i].body);
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
