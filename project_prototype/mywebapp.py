@@ -13,6 +13,14 @@ mongo = PyMongo(app)
 def root():
     return app.send_static_file('index.html')
 
+@app.route("/test", methods=['POST'])
+def test():
+    return render_template('template1.html')
+
+@app.route("/char", methods=['POST'])
+def charPage():
+    return render_template('template_char.html')
+
 @app.route("/races", methods=['POST'])
 def headers():
 	title = request.values['title']
