@@ -33,7 +33,7 @@ def returnRace():
 def returnRace():
 	name = request.args.get['name','']
 	class_id = mongo.db.classes
-	class_id = class_id.find_one({'race':name})
+	class_id = class_id.find_one({'class':name})
 	del class_id['_id']
 	return json.dumps(class_id)
 
