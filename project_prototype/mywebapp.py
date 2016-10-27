@@ -30,7 +30,7 @@ def returnRace():
 	return json.dumps(race)
 
 @app.route("/class", methods=['GET'])
-def returnRace():
+def returnClass():
 	name = request.args.get['name','']
 	class_id = mongo.db.classes
 	class_id = class_id.find_one({'class':name})
