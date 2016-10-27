@@ -1,0 +1,32 @@
+var race_x = {
+    "race": "",
+    "description": [{
+        title: "",
+        body: ""
+    }, {
+        title: "",
+        body: ""
+    }],
+    attributes: {
+        attr: "",
+        mod: 0
+    },
+    "Speed": 30,
+    abilities: [{
+        trait: "",
+        ability: ""
+    }, {
+        trait: "",
+        ability: ""
+    }, {
+        trait: "",
+        ability: ""
+    }, {
+        trait: "",
+        ability: ""
+    }, {
+        trait: "",
+        ability: ""
+    }],
+    language: ["Common", ""]
+}

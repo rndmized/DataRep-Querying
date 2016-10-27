@@ -21,16 +21,6 @@ def test():
 def charPage():
     return render_template('template_char.html')
 
-@app.route("/races", methods=['POST'])
-def headers():
-	title = request.values['title']
-	desc = request.values['desc']
-	print(title)
-	print(desc)
-	stringy = "<h1 id="+'"'+title+'"'+"></h1>" + "<p id="+'"'+desc+'"'+"></p>"
-	print(stringy)
-    	return stringy
-
 @app.route("/race", methods=['POST'])
 def returnRace():
 	name = request.values['name']
