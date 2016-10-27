@@ -31,7 +31,7 @@ def returnRace():
 
 @app.route("/class", methods=['GET'])
 def returnClass():
-	name = request.args.get['name','']
+	name = request.args.get('name', '')
 	class_id = mongo.db.classes
 	class_id = class_id.find_one({'class':name})
 	del class_id['_id']
