@@ -74,7 +74,7 @@
         data = {
             name: class_id
         }
-        $.post("/class", data, function(resbody) {
+        $.get("/class", data, function(resbody) {
             $('#descDiv').empty();
             $('#traitScores').empty();
             class_type = JSON.parse(resbody);
@@ -86,16 +86,19 @@
             });
             $.each(class_type.profiencies, function(i) {
                 $('#traitScores').append('<h4 id="' + 'profiency' + i + '"></h4>');
-                $('#attribute' + i).text(class_type.profiencies[i].profiency);
-                $('#traitScores').append('<p id="' + 'modifier' + i + '"><>');
-                $('#modifier' + i).text(class_type.attributes[i].mod);
+                $('#profiency' + i).text(class_type.profiencies[i].profiency);
+                  $.each(class_type.profiencies, function(j) {
+                    $('#traitScores').append('<p id="' + 'ability' + j + '"><>');
+                    $('#ability' + i).text(class_type.profiencies[i].ability[j]);
+                  }
             });
-
-            $.each(race.abilities, function(i) {
-                $('#traitScores').append('<h3 id="' + 'trait' + i + '"></h3>');
-                $('#trait' + i).text(race.abilities[i].trait);
-                $('#traitScores').append('<p id="' + 'ability' + i + '" text-right><>');
-                $('#ability' + i).text(race.abilities[i].ability);
+            $.each(class_type.equipment, function(i) {
+                $('#traitScores').append('<h3 id="' + 'equipment' + i + '"></h3>');
+                $('#equipment' + i).text(race.abilities[i].trait);
+                $.each(class_type.equipment.primary, function(j) {
+                  $('#traitScores').append('<p id="' + 'primary' + j + '"><>');
+                  $('#primary' + i).text(class_type.equipment[i].primary[j]);
+                }
             });
         });
 

@@ -6,7 +6,7 @@ app = Flask('dnd5e')
 
 # connect to another MongoDB database on the same host
 app.config['MONGO_DBNAME'] = 'dnd5e'
-app.config['MONGO_URI'] ='mongodb://localhost:27017/dnd5e' 
+app.config['MONGO_URI'] ='mongodb://localhost:27017/dnd5e'
 mongo = PyMongo(app)
 
 @app.route("/")
@@ -25,10 +25,18 @@ def charPage():
 def returnRace():
 	name = request.values['name']
 	raceReq = mongo.db.races
-	race = raceReq.find_one({'race':name}) 
+	race = raceReq.find_one({'race':name})
 	del race['_id']
 	return json.dumps(race)
-    
+
+@app.route("/class", methods=['GET'])
+def returnRace():
+	name = request.args.get['name','']
+	class_id = mongo.db.classes
+	class_id = class_id.find_one({'race':name})
+	del class_id['_id']
+	return json.dumps(class_id)
+
 
 
 if __name__ == "__main__":
