@@ -8,6 +8,7 @@
             <a href="#" id="dwarves" class="list-group-item">Dwarves</a>
             <a href="#" class="list-group-item" id="halflings">Halflings</a>
             <a href="#" class="list-group-item" id="humans">Humans</a>
+            <a href="#" class="list-group-item" id="cleric">Cleric</a>
         </div>
         <div class="col-md-8" id="descDiv">
         </div>
@@ -33,6 +34,10 @@
         printRace("human");
 
     });
+    $("#cleric").click(function(e) {
+        printClass("cleric");
+
+    });
 
     function printRace(id) {
         data = {
@@ -53,6 +58,37 @@
                 $('#attribute' + i).text(race.attributes[i].attr);
                 $('#traitScores').append('<p id="' + 'modifier' + i + '"><>');
                 $('#modifier' + i).text(0 + race.attributes[i].mod);
+            });
+
+            $.each(race.abilities, function(i) {
+                $('#traitScores').append('<h3 id="' + 'trait' + i + '"></h3>');
+                $('#trait' + i).text(race.abilities[i].trait);
+                $('#traitScores').append('<p id="' + 'ability' + i + '" text-right><>');
+                $('#ability' + i).text(race.abilities[i].ability);
+            });
+        });
+
+    };
+
+    function printClass(class_id) {
+        data = {
+            name: class_id
+        }
+        $.post("/class", data, function(resbody) {
+            $('#descDiv').empty();
+            $('#traitScores').empty();
+            class_type = JSON.parse(resbody);
+            $.each(class_type.description, function(i) {
+                $('#descDiv').append('<h1 id="' + 'title' + i + '"></h1>');
+                $('#title' + i).text(class_type.description[i].title);
+                $('#descDiv').append('<p id="' + 'desc' + i + '"><>');
+                $('#desc' + i).text(class_type.description[i].body);
+            });
+            $.each(class_type.profiencies, function(i) {
+                $('#traitScores').append('<h4 id="' + 'profiency' + i + '"></h4>');
+                $('#attribute' + i).text(class_type.profiencies[i].profiency);
+                $('#traitScores').append('<p id="' + 'modifier' + i + '"><>');
+                $('#modifier' + i).text(class_type.attributes[i].mod);
             });
 
             $.each(race.abilities, function(i) {
