@@ -1,32 +1,104 @@
-var race_x = {
-    "race": "",
+var classx = {
+    "class": "",
     "description": [{
-        title: "",
-        body: ""
+        "title": "",
+        "body": ""
     }, {
-        title: "",
-        body: ""
+        "title": "",
+        "body": ""
+    }, {
+        "title": "",
+        "body": ""
     }],
-    attributes: {
-        attr: "",
-        mod: 0
+    "hitPoints": {
+        "base": 0,
+        "mod": "Constitution"
     },
-    "Speed": 30,
-    abilities: [{
-        trait: "",
-        ability: ""
+    "proficiencies": [{
+        "proficiency": "Armor",
+        "ability": [
+            "Light Armor",
+            "Medium Armor",
+            "Shields"
+        ]
     }, {
-        trait: "",
-        ability: ""
+        "proficiency": "Weapons",
+        "ability": [
+            "Simple Weapons"
+        ]
     }, {
-        trait: "",
-        ability: ""
+        "proficiency": "Saving Throws",
+        "ability": [
+            "Wisdom",
+            "Charisma"
+        ]
     }, {
-        trait: "",
-        ability: ""
-    }, {
-        trait: "",
-        ability: ""
+        "proficiency": "Skills",
+        "ability": [
+            "History",
+            "Insight",
+            "Medicine",
+            "Persuasion",
+            "Religion"
+        ]
     }],
-    language: ["Common", ""]
+    "equipment": [{
+        "equipment_type": "Weapons",
+        "primary": [
+            "Mace"
+        ],
+        "optional": "Warhammer"
+    }, {
+        "equipment_type": "Armor",
+        "primary": [
+            "Scale Mail",
+            "Leather Armor"
+        ],
+        "optional": "Chain Mail"
+    }],
+    "levelTable": [{
+        "level": 0
+    }, {
+        "level": 1,
+        "profiency": 2,
+        "features": [
+            "Spellcasting",
+            "Divine Domain"
+        ],
+        "cantrips": 3,
+        "spells": [
+            2
+        ]
+    }, {
+        "level": 2,
+        "profiency": 2,
+        "features": [
+            "Chanel Divinity 1/rest",
+            "Divine Domain feature"
+        ],
+        "cantrips": 3,
+        "spells": [
+            3
+        ]
+    }, {
+        "level": 3,
+        "profiency": 2,
+        "features": [],
+        "cantrips": 3,
+        "spells": [
+            4,
+            2
+        ]
+    }, {
+        "level": 4,
+        "profiency": 3,
+        "features": [
+            "Ability Score Improvement"
+        ],
+        "cantrips": 3,
+        "spells": [
+            4,
+            3
+        ]
+    }]
 }

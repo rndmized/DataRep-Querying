@@ -3,14 +3,27 @@
 
 <body>
     <div class="container row">
-        <div class="list-group col-md-2" id="menu">
-            <a href="#" id="elves" class="list-group-item">Elves</a>
-            <a href="#" id="dwarves" class="list-group-item">Dwarves</a>
-            <a href="#" class="list-group-item" id="halflings">Halflings</a>
-            <a href="#" class="list-group-item" id="humans">Humans</a>
-            <a href="#" class="list-group-item" id="cleric">Cleric</a>
+        <div class="list-group col-md-3" id="menu">
+            <div>Select Race:
+                <a href="#" id="elves" class="list-group-item">
+                    <input type="radio" name="raceRadio"> Elves</a>
+                <a href="#" id="dwarves" class="list-group-item">
+                    <input type="radio" name="raceRadio"> Dwarves</a>
+                <a href="#" class="list-group-item" id="halflings">
+                    <input type="radio" name="raceRadio"> Halflings</a>
+                <a href="#" class="list-group-item" id="humans">
+                    <input type="radio" name="raceRadio"> Humans</a>
+            </div>
+            <div>Select Class:
+                <a href="#" class="list-group-item" id="cleric">
+                    <input type="radio" name="classRadio"> Cleric</a>
+                <a href="#" class="list-group-item" id="rogue">
+                    <input type="radio" name="classRadio"> Rogue</a>
+                <a href="#" class="list-group-item" id="ranger">
+                    <input type="radio" name="classRadio"> Ranger</a>
+            </div>
         </div>
-        <div class="col-md-8" id="descDiv">
+        <div class="col-md-7" id="descDiv">
         </div>
         <div class="col-md-2" id="traitScores">
         </div>
@@ -92,8 +105,8 @@
                 $('#traitScores').append('<h4 id="' + 'proficiency' + i + '"></h4>');
                 $('#proficiency' + i).text(class_type.proficiencies[i].proficiency);
                 $.each(class_type.proficiencies[i].ability, function(j) {
-                    $('#traitScores').append('<p id="' + 'ability' + i +'_'+ j + '"><>');
-                    $('#ability' + i +'_'+ j).text(class_type.proficiencies[i].ability[j]);
+                    $('#traitScores').append('<p id="' + 'ability' + i + '_' + j + '"><>');
+                    $('#ability' + i + '_' + j).text(class_type.proficiencies[i].ability[j]);
                 });
             });
             $('#traitScores').append('<h2>Equipment</h2>');
@@ -102,8 +115,8 @@
                 $('#equipment' + i).text(class_type.equipment[i].equipment_type);
 
                 $.each(class_type.equipment[i].primary, function(j) {
-                    $('#traitScores').append('<p id="' + 'primary' + i +'_'+ j + '"><>');
-                    $('#primary' + i +'_'+ j).text(class_type.equipment[i].primary[j]);
+                    $('#traitScores').append('<p id="' + 'primary' + i + '_' + j + '"><>');
+                    $('#primary' + i + '_' + j).text(class_type.equipment[i].primary[j]);
                 });
             });
         });
