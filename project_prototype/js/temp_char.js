@@ -1,59 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<body>
-    <div class="container row">
-        <div class="list-group col-md-3" id="menu">
-            <div>
-                <a href="#" id="details" class="list-group-item">Character Details</a>
-            </div>
-            <div>Select Race:
-                <a href="#" id="elves" class="list-group-item">
-                    <input type="radio" name="raceRadio" id="elf_selected"> Elves</a>
-                <a href="#" id="dwarves" class="list-group-item">
-                    <input type="radio" name="raceRadio" id="dwarf_selected"> Dwarves</a>
-                <a href="#" class="list-group-item" id="halflings">
-                    <input type="radio" name="raceRadio" id="halfling_selected"> Halflings</a>
-                <a href="#" class="list-group-item" id="humans">
-                    <input type="radio" name="raceRadio" id="human_selected"> Humans</a>
-            </div>
-            <div>Select Class:
-                <a href="#" class="list-group-item" id="cleric">
-                    <input type="radio" name="classRadio"> Cleric</a>
-                <a href="#" class="list-group-item" id="fighter">
-                    <input type="radio" name="classRadio"> Fighter</a>
-                <a href="#" class="list-group-item" id="rogue">
-                    <input type="radio" name="classRadio"> Rogue</a>
-            </div>
-        </div>
-        <div class="col-md-7" id="descDiv">
-        </div>
-        <div class="col-md-2" id="traitScores">
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
-    <script>
-    $(document).ready(function() {
-        printDetails();
-    });
+    $( document ).ready(function() {
+            printDetails();
+        });
     var pc = {
         char_name: null,
-        alignment: null,
-        player_name: null,
-        background: null,
-        strenght: null,
-        dexterity: null,
-        constitution: null,
-        intelligence: null,
-        wisdom: null,
-        charisma: null,
+        alignment:null,
+        player_name:null,
+        background:null,
+        strenght:null,
+        dexterity:null,
+        constitution:null,
+        intelligence:null,
+        wisdom:null,
+        charisma:null,
         race: null,
         class: null,
     };
-
-    //Print Race to html
     $("#elves").click(function(e) {
         printRace("elf");
     });
@@ -69,28 +31,6 @@
         printRace("human");
 
     });
-
-    //Select and assign race to char
-    $("#elf_selected").click(function(e) {
-        setRace("elf");
-    });
-    $("#dwarf_selected").click(function(e) {
-        setRace("dwarf");
-
-    });
-    $("#halfling_selected").click(function(e) {
-        setRace("halfling");
-
-    });
-    $("#human_selected").click(function(e) {
-        setRace("human");
-
-    });
-
-
-
-
-    //Print Classes to html
     $("#cleric").click(function(e) {
         printClass("cleric");
 
@@ -107,31 +47,6 @@
         printDetails();
 
     });
-
-    //Lite Race
-    function getRace(id) {
-        var race;
-        var data = {
-            name: id
-        }
-        $.get("/race_selected", data, function(resbody) {
-            $('#descDiv').empty();
-            $('#traitScores').empty();
-            race = JSON.parse(resbody);
-            console.log(race);
-            
-        });
-        return race;
-    };
-
-    function setRace(race_id) {
-        pc.race =JSON.parse(getRace(race_id));
-        console.log(pc.race);
-
-    };
-
-
-    //full race
 
     function printRace(id) {
         var race;
@@ -218,7 +133,3 @@
         });
 
     };
-    </script>
-</body>
-
-</html>

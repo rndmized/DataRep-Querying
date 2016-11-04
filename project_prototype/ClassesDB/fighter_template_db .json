@@ -1,6 +1,9 @@
 var fighter = {
     "class": "fighter"
     , "description": [{
+        "title": "Fighters"
+        , "body": "Fighters, perhaps the most diverse class of characters in the worlds of Dungeons & Dragons. Questing knights, conquering overlords, royal champions, elite foot soldiers, hardened mercenaries, and bandit kings—as fighters, they all share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. And they are well acquainted with death, both meting it out and staring it defiantly in the face."
+    }, {
         "title": "Well-Rounded Specialists"
         , "body": "Fighters learn the basics of all combat styles. Every fighter can swing an axe, fence with a rapier, wield a longsword or a greatsword, use a bow, and even trap foes in a net with some degree of skill. Likewise, a fighter is adept with shields and every form of armor. Beyond that basic degree of familiarity, each fighter specializes in a certain style of combat. Some concentrate on archery, some on fighting with two weapons at once, and some on augmenting their martial skills with magic. This combination of broad general ability and extensive specialization makes fighters superior combatants on battlefields and in dungeons alike."
     }, {
@@ -76,22 +79,12 @@ var fighter = {
     }, {
         "level": 3
         , "profiency": 2
-        , "features": []
-        , "cantrips": 3
-        , "spells": [
-            4
-            , 2
-        ]
+        , "features": ["Martial Archetype"]
     }, {
         "level": 4
-        , "profiency": 3
+        , "profiency": 2
         , "features": [
             "Ability Score Improvement"
-        ]
-        , "cantrips": 3
-        , "spells": [
-            4
-            , 3
         ]
     }]
 }

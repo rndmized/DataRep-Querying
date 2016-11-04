@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo
 app = Flask('dnd5e')
 
 
-# connect to another MongoDB database on the same host
+# connect to a MongoDB database.
 app.config['MONGO_DBNAME'] = 'dnd5e'
 app.config['MONGO_URI'] ='mongodb://localhost:27017/dnd5e'
 mongo = PyMongo(app)
@@ -21,12 +21,32 @@ def test():
 def charPage():
     return render_template('template_char.html')
 
-@app.route("/race", methods=['POST'])
+@app.route("/charDetails", methods=['POST'])
+def charDetails():
+    return render_template('char_details.html')
+
+@app.route("/charRolls", methods=['POST'])
+def charRolls():
+    return render_template('char_rolls.html')
+
+
+
+@app.route("/race", methods=['GET'])
 def returnRace():
-	name = request.values['name']
+	name = request.args.get('name', '')
 	raceReq = mongo.db.races
 	race = raceReq.find_one({'race':name})
 	del race['_id']
+	return json.dumps(race)
+
+
+@app.route("/race_selected", methods=['GET'])
+def returnRaceSelected():
+	name = request.args.get('name', '')
+	raceReq = mongo.db.races
+	race = raceReq.find_one({'race':name})
+	del race['_id']
+	del race['description']
 	return json.dumps(race)
 
 @app.route("/class", methods=['GET'])
