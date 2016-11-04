@@ -25,6 +25,9 @@
                 <a href="#" class="list-group-item" id="rogue">
                     <input type="radio" name="classRadio"> Rogue</a>
             </div>
+            <div>
+                <a href="#" id="char_sheet" class="list-group-item">Character Sheet</a>
+            </div>
         </div>
         <div class="col-md-7" id="descDiv">
         </div>
@@ -38,20 +41,14 @@
     $(document).ready(function() {
         printDetails();
     });
-    var pc = {
-        char_name: null,
-        alignment: null,
-        player_name: null,
-        background: null,
-        strenght: null,
-        dexterity: null,
-        constitution: null,
-        intelligence: null,
-        wisdom: null,
-        charisma: null,
-        race: null,
-        class: null,
-    };
+    $("#char_sheet").click(function(e) {
+        $.get("/char_sheet", function(resbody) {
+            $('#mypagediv').empty();
+            $('#mypagediv').html(resbody);
+
+        });
+    });
+
 
     //Print Race to html
     $("#elves").click(function(e) {
@@ -87,9 +84,6 @@
 
     });
 
-
-
-
     //Print Classes to html
     $("#cleric").click(function(e) {
         printClass("cleric");
@@ -118,15 +112,13 @@
             $('#descDiv').empty();
             $('#traitScores').empty();
             race = JSON.parse(resbody);
-            console.log(race);
-            
         });
         return race;
     };
 
     function setRace(race_id) {
-        pc.race =JSON.parse(getRace(race_id));
-        console.log(pc.race);
+        var selected_race = getRace(race_id);
+        console.log(selected_race);
 
     };
 

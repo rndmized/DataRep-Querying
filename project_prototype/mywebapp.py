@@ -29,6 +29,10 @@ def charDetails():
 def charRolls():
     return render_template('char_rolls.html')
 
+@app.route("/char_sheet", methods=['GET'])
+def charSheet():
+    return render_template('char_sheet.html')
+
 
 
 @app.route("/race", methods=['GET'])

@@ -30,11 +30,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
     <script>
-    $(document).ready(function() {
-        $.post("/test", function(resbody) {
-            $('#mypagediv').html(resbody);
+
+
+    var pc = {
+        char_name: null,
+        alignment: null,
+        player_name: null,
+        background: null,
+        strenght: null,
+        dexterity: null,
+        constitution: null,
+        intelligence: null,
+        wisdom: null,
+        charisma: null,
+        race: null,
+        class: null
+    };
+    
+    $(document).ready(
+        function() {
+            $.post("/test", function(resbody) {
+                $('#mypagediv').html(resbody);
+            });
         });
-    });
 
     $("#home").click(function(e) {
         e.preventDefault();
@@ -49,6 +67,8 @@
             $('#mypagediv').html(resbody);
         });
     });
+
+
     </script>
 </body>
 
