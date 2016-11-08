@@ -49,21 +49,21 @@
     
     $(document).ready(
         function() {
-            $.post("/test", function(resbody) {
+            $.get("/test", function(resbody) {
                 $('#mypagediv').html(resbody);
             });
         });
 
     $("#home").click(function(e) {
         e.preventDefault();
-        $.post("/test", function(resbody) {
+        $.get("/test", function(resbody) {
             $('#mypagediv').html(resbody);
         });
     });
 
     $("#char").click(function(e) {
         e.preventDefault();
-        $.post("/char", function(resbody) {
+        $.get("/char", function(resbody) {
             $('#mypagediv').html(resbody);
         });
     });

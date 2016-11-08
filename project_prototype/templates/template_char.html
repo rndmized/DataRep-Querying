@@ -84,6 +84,21 @@
 
     });
 
+
+    //Select and assign class to char
+    $("#cleric").click(function(e) {
+        setClass("cleric");
+
+    });
+    $("#fighter").click(function(e) {
+        setClass("fighter");
+
+    });
+    $("#rogue").click(function(e) {
+        setClass("rogue");
+
+    });
+
     //Print Classes to html
     $("#cleric").click(function(e) {
         printClass("cleric");
@@ -112,13 +127,17 @@
             $('#descDiv').empty();
             $('#traitScores').empty();
             race = JSON.parse(resbody);
+            console.log(race);
+            pc.race = race;
+            console.log(pc.race);
         });
         return race;
     };
 
-    function setRace(race_id) {
-        var selected_race = getRace(race_id);
+    function setRace(id) {
+        var selected_race = getRace(id);
         console.log(selected_race);
+        console.log(pc.race);
 
     };
 
@@ -156,7 +175,19 @@
         });
 
     };
+    //lite class
+    function setClass(id) {
+        var race;
+        var data = {
+            name: id
+        }
+        $.get("/class_selected", data, function(resbody) {
+            class_id = JSON.parse(resbody);
+            pc.class = class_id;
+        });
+    };
 
+    //full class
     function printClass(class_id) {
         var class_type;
         var data = {
@@ -202,10 +233,10 @@
 
         $('#descDiv').empty();
         $('#traitScores').empty();
-        $.post("/charDetails", function(resbody) {
+        $.get("/charDetails", function(resbody) {
             $('#descDiv').html(resbody);
         });
-        $.post("/charRolls", function(resbody) {
+        $.get("/charRolls", function(resbody) {
             $('#traitScores').html(resbody);
         });
 

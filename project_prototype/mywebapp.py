@@ -13,19 +13,19 @@ mongo = PyMongo(app)
 def root():
     return app.send_static_file('index.html')
 
-@app.route("/test", methods=['POST'])
+@app.route("/test", methods=['GET'])
 def test():
     return render_template('template1.html')
 
-@app.route("/char", methods=['POST'])
+@app.route("/char", methods=['GET'])
 def charPage():
     return render_template('template_char.html')
 
-@app.route("/charDetails", methods=['POST'])
+@app.route("/charDetails", methods=['GET'])
 def charDetails():
     return render_template('char_details.html')
 
-@app.route("/charRolls", methods=['POST'])
+@app.route("/charRolls", methods=['GET'])
 def charRolls():
     return render_template('char_rolls.html')
 
@@ -58,6 +58,15 @@ def returnClass():
 	name = request.args.get('name', '')
 	class_id = mongo.db.classes
 	class_id = class_id.find_one({'class':name})
+	del class_id['_id']
+	return json.dumps(class_id)
+
+@app.route("/class_selected", methods=['GET'])
+def returnClassSelected():
+	name = request.args.get('name', '')
+	class_id = mongo.db.classes
+	class_id = class_id.find_one({'class':name})
+	del class_id['description']
 	del class_id['_id']
 	return json.dumps(class_id)
 
