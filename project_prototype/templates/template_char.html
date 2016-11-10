@@ -4,34 +4,52 @@
 <body>
     <div class="container row">
         <div class="list-group col-md-3" id="menu">
-            <div>
-                <a href="#" id="details" class="list-group-item">Character Details</a>
-            </div>
-            <div>Select Race:
-                <a href="#" id="elves" class="list-group-item">
-                    <input type="radio" name="raceRadio" id="elf_selected"> Elves</a>
-                <a href="#" id="dwarves" class="list-group-item">
-                    <input type="radio" name="raceRadio" id="dwarf_selected"> Dwarves</a>
-                <a href="#" class="list-group-item" id="halflings">
-                    <input type="radio" name="raceRadio" id="halfling_selected"> Halflings</a>
-                <a href="#" class="list-group-item" id="humans">
-                    <input type="radio" name="raceRadio" id="human_selected"> Humans</a>
-            </div>
-            <div>Select Class:
-                <a href="#" class="list-group-item" id="cleric">
-                    <input type="radio" name="classRadio"> Cleric</a>
-                <a href="#" class="list-group-item" id="fighter">
-                    <input type="radio" name="classRadio"> Fighter</a>
-                <a href="#" class="list-group-item" id="rogue">
-                    <input type="radio" name="classRadio"> Rogue</a>
-            </div>
-            <div>
-                <a href="#" id="char_sheet" class="list-group-item">Character Sheet</a>
-            </div>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active" id="details"><a href="#">Character Details</a></li>
+                <li>Select Race:
+                    <ul>
+                        <li>
+                            <a href="#" id="elves">
+                                <input type="radio" name="raceRadio" id="elf_selected"> Elves</a>
+                        </li>
+                        <li>
+                            <a href="#" id="dwarves">
+                                <input type="radio" name="raceRadio" id="dwarf_selected"> Dwarves</a>
+                        </li>
+                        <li>
+                            <a href="#" id="halflings">
+                                <input type="radio" name="raceRadio" id="halfling_selected"> Halflings</a>
+                        </li>
+                        <li>
+                            <a href="#" id="humans">
+                                <input type="radio" name="raceRadio" id="human_selected"> Humans</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>Select Class:
+                    <ul>
+                        <li>
+                            <a href="#" id="cleric">
+                                <input type="radio" name="classRadio" id="cleric_selected"> Cleric</a>
+                        </li>
+                        <li>
+                            <a href="#" id="fighter">
+                                <input type="radio" name="classRadio" id="fighter_selected"> Fighter</a>
+                        </li>
+                        <li>
+                            <a href="#" id="rogue">
+                                <input type="radio" name="classRadio" id="rogue_selected"> Rogue</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" id="char_sheet">Generate Character Sheet</a></li>
+            </ul>
         </div>
-        <div class="col-md-7" id="descDiv">
-        </div>
-        <div class="col-md-2" id="traitScores">
+        <div id="infoDiv">
+            <div class="col-md-7" id="descDiv">
+            </div>
+            <div class="col-md-2" id="traitScores">
+            </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
@@ -43,11 +61,18 @@
     });
     $("#char_sheet").click(function(e) {
         $.get("/char_sheet", function(resbody) {
-            $('#mypagediv').empty();
-            $('#mypagediv').html(resbody);
+            $('#infoDiv').empty();
+            $('#infoDiv').append('<div class="col-md-9" id="chat_sheet_div"></div>');
+            $('#chat_sheet_div').html(resbody);
 
         });
     });
+
+    function subDiv(){
+         $('#infoDiv').empty();
+         $('#infoDiv').append('<div class="col-md-7" id="descDiv"> </div>');
+         $('#infoDiv').append('<div class="col-md-2" id="traitScores"> </div>');
+    };
 
 
     //Print Race to html
@@ -86,15 +111,15 @@
 
 
     //Select and assign class to char
-    $("#cleric").click(function(e) {
+    $("#cleric_selected").click(function(e) {
         setClass("cleric");
 
     });
-    $("#fighter").click(function(e) {
+    $("#fighter_selected").click(function(e) {
         setClass("fighter");
 
     });
-    $("#rogue").click(function(e) {
+    $("#rogue_selected").click(function(e) {
         setClass("rogue");
 
     });
@@ -118,34 +143,23 @@
     });
 
     //Lite Race
-    function getRace(id) {
-        var race;
+    function setRace(id) {
         var data = {
             name: id
         }
         $.get("/race_selected", data, function(resbody) {
-            $('#descDiv').empty();
-            $('#traitScores').empty();
-            race = JSON.parse(resbody);
-            console.log(race);
-            pc.race = race;
-            console.log(pc.race);
+            pc.race = JSON.parse(resbody);
         });
-        return race;
     };
 
-    function setRace(id) {
-        var selected_race = getRace(id);
-        console.log(selected_race);
-        console.log(pc.race);
-
-    };
 
 
     //full race
 
     function printRace(id) {
+        subDiv();
         var race;
+
         var data = {
             name: id
         }
@@ -177,18 +191,17 @@
     };
     //lite class
     function setClass(id) {
-        var race;
         var data = {
             name: id
         }
         $.get("/class_selected", data, function(resbody) {
-            class_id = JSON.parse(resbody);
-            pc.class = class_id;
+            pc.class = JSON.parse(resbody);
         });
     };
 
     //full class
     function printClass(class_id) {
+        subDiv();
         var class_type;
         var data = {
             name: class_id
@@ -230,9 +243,7 @@
     };
 
     function printDetails() {
-
-        $('#descDiv').empty();
-        $('#traitScores').empty();
+        subDiv();
         $.get("/charDetails", function(resbody) {
             $('#descDiv').html(resbody);
         });
