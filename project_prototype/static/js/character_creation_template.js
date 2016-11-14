@@ -1,21 +1,23 @@
+$(document).ready(function() {
+        printDetails();
+    });
+    $("#char_sheet").click(function(e) {
+        $.get("/char_sheet", function(resbody) {
+            $('#infoDiv').empty();
+            $('#infoDiv').append('<div class="col-md-10" id="chat_sheet_div"></div>');
+            $('#chat_sheet_div').html(resbody);
 
-    $( document ).ready(function() {
-            printDetails();
         });
-    var pc = {
-        char_name: null,
-        alignment:null,
-        player_name:null,
-        background:null,
-        strenght:null,
-        dexterity:null,
-        constitution:null,
-        intelligence:null,
-        wisdom:null,
-        charisma:null,
-        race: null,
-        class: null,
+    });
+
+    function subDiv(){
+         $('#infoDiv').empty();
+         $('#infoDiv').append('<div class="col-md-7" id="descDiv"> </div>');
+         $('#infoDiv').append('<div class="col-md-3" id="traitScores"> </div>');
     };
+
+
+    //Print Race to html
     $("#elves").click(function(e) {
         printRace("elf");
     });
@@ -31,6 +33,40 @@
         printRace("human");
 
     });
+
+    //Select and assign race to char
+    $("#elf_selected").click(function(e) {
+        setRace("elf");
+    });
+    $("#dwarf_selected").click(function(e) {
+        setRace("dwarf");
+
+    });
+    $("#halfling_selected").click(function(e) {
+        setRace("halfling");
+
+    });
+    $("#human_selected").click(function(e) {
+        setRace("human");
+
+    });
+
+
+    //Select and assign class to char
+    $("#cleric_selected").click(function(e) {
+        setClass("cleric");
+
+    });
+    $("#fighter_selected").click(function(e) {
+        setClass("fighter");
+
+    });
+    $("#rogue_selected").click(function(e) {
+        setClass("rogue");
+
+    });
+
+    //Print Classes to html
     $("#cleric").click(function(e) {
         printClass("cleric");
 
@@ -48,8 +84,24 @@
 
     });
 
+    //Lite Race
+    function setRace(id) {
+        var data = {
+            name: id
+        }
+        $.get("/race_selected", data, function(resbody) {
+            pc.race = JSON.parse(resbody);
+        });
+    };
+
+
+
+    //full race
+
     function printRace(id) {
+        subDiv();
         var race;
+
         var data = {
             name: id
         }
@@ -79,8 +131,19 @@
         });
 
     };
+    //lite class
+    function setClass(id) {
+        var data = {
+            name: id
+        }
+        $.get("/class_selected", data, function(resbody) {
+            pc.class = JSON.parse(resbody);
+        });
+    };
 
+    //full class
     function printClass(class_id) {
+        subDiv();
         var class_type;
         var data = {
             name: class_id
@@ -122,13 +185,11 @@
     };
 
     function printDetails() {
-
-        $('#descDiv').empty();
-        $('#traitScores').empty();
-        $.post("/charDetails", function(resbody) {
+        subDiv();
+        $.get("/charDetails", function(resbody) {
             $('#descDiv').html(resbody);
         });
-        $.post("/charRolls", function(resbody) {
+        $.get("/charRolls", function(resbody) {
             $('#traitScores').html(resbody);
         });
 

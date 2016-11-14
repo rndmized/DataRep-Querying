@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="canvas" height="1052" width="744" style="border:1px solid black;"></canvas>
+    </div>
+    <script type="text/javascript">
+        var img = new Image();
+        img.src = "../static/Assets/char_sheet_png.png";
+        var canvas = document.getElementById("canvas");
+        // Set the canvas up for drawing in 2D.
+        var ctx = canvas.getContext("2d");
+        //Draw Character Sheet on canvas
+        ctx.drawImage(img, 0, 0);
+        //Draw name on canvas
+        ctx.font = "20px Arial";
+        //ctx.fillText(pc.char_name,50,122);
+        //Draw race on canvas
+        //Draw class on canvas
+
+
+        canvas.addEventListener("click", function (event) {
+            var x = event.clientX-canvas.offsetLeft
+            var y = event.clientY-canvas.offsetTop;
+            console.log("x: " + x + "y: " + y);
+
+        });
+    </script>
+</body>
+
+</html>

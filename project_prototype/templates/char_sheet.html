@@ -3,22 +3,44 @@
 
 <body>
     <div class="container">
-        <canvas id="canvas" style="border:1px solid black;"></canvas>
+        <canvas id="canvas" height="1052" width="744" style="border:1px solid black;"></canvas>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    var canvas = document.getElementById("canvas");
-    // Set the canvas up for drawing in 2D.
-    var ctx = canvas.getContext("2d");
-    var img = new Image();
-    img.src = "/static/Assets/char_sheet_png.png";
-    canvas.height = img.height;
-    canvas.width = img.width;
-    ctx.drawImage(img, 0, 0);
-    ctx.font = "20px Arial";
-    ctx.fillText(pc.char_name,50,122);
+        var img = new Image();
+        img.src = "/static/Assets/char_sheet_png.png";
+        var canvas = document.getElementById("canvas");
+        // Set the canvas up for drawing in 2D.
+        var ctx = canvas.getContext("2d");
+        //Draw Character Sheet on canvas
+        ctx.drawImage(img, 0, 0);
+        //Draw name on canvas
+        ctx.font = "20px Arial";
+        ctx.fillText(pc.char_name,55,122);
+        ctx.font = "15px Arial";
+        //Draw race on canvas
+        ctx.fillText(pc.race.race.toUpperCase(),335,135);
+        //Draw class on canvas
+        ctx.fillText(pc.class.class.toUpperCase(),335,100);
+        //Draw Background
+        ctx.fillText(pc.background,475,100);
+        //Draw Alignment
+        ctx.fillText(pc.alignment,475,135);
+        //Draw Player Name
+        ctx.fillText(pc.player_name,595,100);
+        //Draw Speed
+        ctx.font = "25px Arial";
+        ctx.fillText(pc.race.Speed,430,230);
+        //Draw Features and Traits on canvas
+        ctx.font = "10px Arial";
+        $.each(pc.race.abilities,function(i){
+            ctx.fillText(pc.race.abilities[i].trait.toUpperCase(), 510, 505 + (13 *(i + 1)));
+        })
+        $.each(pc.class.levelTable[1].features,function(i){
+            ctx.fillText(pc.class.levelTable[1].features[i].toUpperCase(), 510, 505 + (13 * pc.race.abilities.length + (13 *(i + 1))));
+        })
+
+
+
     </script>
 </body>
 

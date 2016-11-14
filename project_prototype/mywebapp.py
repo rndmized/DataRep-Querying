@@ -13,9 +13,9 @@ mongo = PyMongo(app)
 def root():
     return app.send_static_file('index.html')
 
-@app.route("/test", methods=['GET'])
+@app.route("/home", methods=['GET'])
 def test():
-    return render_template('template1.html')
+    return render_template('home_template.html')
 
 @app.route("/char", methods=['GET'])
 def charPage():
@@ -24,10 +24,6 @@ def charPage():
 @app.route("/charDetails", methods=['GET'])
 def charDetails():
     return render_template('char_details.html')
-
-@app.route("/charRolls", methods=['GET'])
-def charRolls():
-    return render_template('char_rolls.html')
 
 @app.route("/char_sheet", methods=['GET'])
 def charSheet():
