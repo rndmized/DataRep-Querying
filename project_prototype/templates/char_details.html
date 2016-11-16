@@ -15,7 +15,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <input type="text" placeholder="Character's Name" id="char_name" name="char_name">
+                                    <input class="btn-block" type="text" placeholder="Character's Name" id="char_name" name="char_name">
                                 </td>
                             </tr>
                             <tr>
@@ -26,22 +26,17 @@
                                 </td>
                                 <td>
             </div>
-            <div class="btn-group btn-group-danger">
-                <button class="btn btn-danger btn-xs" type="button">Danger</button>
-                <button data-toggle="dropdown" class="btn btn-danger btn-xs dropdown-toggle" type="button">
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Lawful Goog</a></li>
-                    <li><a href="#">Chaotic Good</a></li>
-                    <li><a href="#">True Good</a></li>
-                    <li><a href="#">Lawful Neutral</a></li>
-                    <li><a href="#">Chaotic Neutral</a></li>
-                    <li><a href="#">True Neutral</a></li>
-                    <li><a href="#">Lawful Evil</a></li>
-                    <li><a href="#">Chaotic Evil</a></li>
-                    <li><a href="#">True Evil</a></li>
-                </ul>
-            </div>
+            <select class="selectpicker btn-block" id="alignment">
+                <option>Lawful Good</option>
+                <option>Chaotic Good</option>
+                <option>True Good</option>
+                <option>Lawful Neutral</option>
+                <option>Chaotic Neutral</option>
+                <option>True Neutral</option>
+                <option>Lawful Evil</option>
+                <option>Chaotic Evil</option>
+                <option>True Evil</option>
+            </select>
             </td>
             </tr>
             <tr>
@@ -51,7 +46,7 @@
                     </label>
                 </td>
                 <td>
-                    <input type="text" placeholder="Player's Name" id="player_name" name="player_name">
+                    <input class="btn-block" type="text" placeholder="Player's Name" id="player_name" name="player_name">
                 </td>
             </tr>
             <tr>
@@ -61,7 +56,7 @@
                     </label>
                 </td>
                 <td>
-                    <input type="text" placeholder="(Previous occupance)" id="background" name="background">
+                    <input class="btn-block" type="text" placeholder="(Previous occupance)" id="background" name="background">
                 </td>
             </tr>
             </tbody>

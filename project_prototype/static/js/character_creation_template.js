@@ -189,8 +189,4 @@ $(document).ready(function() {
         $.get("/charDetails", function(resbody) {
             $('#descDiv').html(resbody);
         });
-        $.get("/charRolls", function(resbody) {
-            $('#traitScores').html(resbody);
-        });
-
     };
