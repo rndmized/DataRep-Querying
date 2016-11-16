@@ -1,3 +1,6 @@
+var img = new Image();
+img.src = "/static/assets/char_sheet.png";
+
 
 function player_character(){
     this.char_name;

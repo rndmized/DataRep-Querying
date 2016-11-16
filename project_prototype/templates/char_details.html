@@ -2,69 +2,164 @@
 <html lang="en">
 
 <body>
-    <div class="jumbotron text-center">
-        <div class="container">
-            <div class="col-md-10 text-center">
-                <form>
-                    <table class="table table-condensed">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <label class="item item-input item-stacked-label">
-                                        <span class="input-label">Character Name</span>
-                                    </label>
-                                </td>
-                                <td>
-                                    <input class="btn-block" type="text" placeholder="Character's Name" id="char_name" name="char_name">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label class="item item-input item-stacked-label">
-                                        <span class="input-label">Alignment</span>
-                                    </label>
-                                </td>
-                                <td>
-            </div>
-            <select class="selectpicker btn-block" id="alignment">
-                <option>Lawful Good</option>
-                <option>Chaotic Good</option>
-                <option>True Good</option>
-                <option>Lawful Neutral</option>
-                <option>Chaotic Neutral</option>
-                <option>True Neutral</option>
-                <option>Lawful Evil</option>
-                <option>Chaotic Evil</option>
-                <option>True Evil</option>
-            </select>
-            </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="item item-input item-stacked-label">
-                        <span class="input-label">Player Name</span>
-                    </label>
-                </td>
-                <td>
-                    <input class="btn-block" type="text" placeholder="Player's Name" id="player_name" name="player_name">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label class="item item-input item-stacked-label">
-                        <span class="input-label">Background</span>
-                    </label>
-                </td>
-                <td>
-                    <input class="btn-block" type="text" placeholder="(Previous occupance)" id="background" name="background">
-                </td>
-            </tr>
-            </tbody>
-            </table>
-            <button class="button button-block" id="button_test" type="Submit">
-                Save Details
-            </button>
+    <div class="col-md-12 container-fluid text-center">
+        <div class="col-md-8 container-fluid text-center">
+            <form>
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Character Name</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input class="btn-block" type="text" placeholder="Character's Name" id="char_name" name="char_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Alignment</span>
+                                </label>
+                            </td>
+                            <td>
+                                <select class="selectpicker btn-block" id="alignment">
+                                    <option>Lawful Good</option>
+                                    <option>Chaotic Good</option>
+                                    <option>True Good</option>
+                                    <option>Lawful Neutral</option>
+                                    <option>Chaotic Neutral</option>
+                                    <option>True Neutral</option>
+                                    <option>Lawful Evil</option>
+                                    <option>Chaotic Evil</option>
+                                    <option>True Evil</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Player Name</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input class="btn-block" type="text" placeholder="Player's Name" id="player_name" name="player_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Background</span>
+                                </label>
+                            </td>
+                            <td>
+                                <input class="btn-block" type="text" placeholder="(Previous occupance)" id="background" name="background">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr>
+                            <button class="button btn-block btn-danger btn-xs" id="button_roll">
+                                Roll
+                            </button>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="selectpicker btn-block" id="attr">
+                                    <option>Strength</option>
+                                    <option>Dexterity</option>
+                                    <option>Constitution</option>
+                                    <option>Intelligence</option>
+                                    <option>Wisdom</option>
+                                    <option>Charisma</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="selectpicker btn-block" id="Score">
+                                </select>
+                            </td>
+                            <td>
+                                <button class="button btn-block btn-m" id="button_add">
+                                    Add
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="button button-block" id="button_test" type="Submit">
+                    Save Details
+                </button>
             </form>
+        </div>
+        <div class="col-md-4 container-fluid text-center">
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Strength</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="strength">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Dexterity</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="dexterity">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Constitution</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="constitution">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Intelligence</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="intelligence">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Wisdom</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="wisdom">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label">Charisma</span>
+                                </label>
+                            </td>
+                            <td><label class="item item-input item-stacked-label">
+                                    <span class="input-label" id="charisma">0</span>
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            
         </div>
     </div>
     <script>
@@ -81,6 +176,32 @@
         pc.player_name = $("#player_name").val();
         pc.alignment = $("#alignment").val();
         pc.background = $("#background").val();
+
+    });
+
+    $("#button_roll").click(function(e) {
+        var num = [1,2,3,4,5,6];
+        $.each(num,function(i){
+            $('#Score').append('<option>' + Math.floor((Math.random()*15)+3) +'</option>');
+
+        });
+        $('#button_roll').prop('disabled',true);
+
+    });
+
+      $("#button_add").click(function(e) {
+        var attrNo = $('#Score').val();
+        console.log(attrNo);
+        attr = $('#attr').val().toLowerCase();
+        element = "'#"+attr+"'"
+        $('#strength').text(attrNo);
+
+        $('#attr').find($('#Score').val()).prop('disabled',true);
+        $('#attr').selectmenu("refresh", true);
+
+        $('#Score').find($('#Score').val()).remove();
+        $('#Score').selectmenu("refresh", true);
+
 
     });
     </script>
