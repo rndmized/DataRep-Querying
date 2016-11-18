@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request,json,send_file,url_for
+from flask import Flask, render_template,request,json,send_from_directory,make_response
 from flask_pymongo import PyMongo
 
 app = Flask('dnd5e')
@@ -31,10 +31,8 @@ def charSheet():
 
 @app.route("/character_sheet", methods=['GET'])
 def getCharacterSheetImage():
-    filename = url_for('static', filename='assets/char_sheet.png')
-    return filename
-
-
+	resp = flask.make_response(send_from_directory('static',filename='/assets/char_sheet.png'))
+    	return resp 
 
 @app.route("/race", methods=['GET'])
 def returnRace():
