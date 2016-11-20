@@ -1,7 +1,6 @@
-<body>
 <div class="list-group col-md-2" id="menu">
     <ul class="nav nav-pills nav-stacked">
-        <li id="details"><a class="label label-danger" href="#">Character Details</a></li>
+        <li><a class="label label-danger" href="#" id="details">Character Details</a></li>
         <li class="label label-danger">Select Race:
             <table class="table table-condensed">
                 <tbody>
@@ -9,25 +8,33 @@
                         <td>
                             <input type="radio" name="raceRadio" id="dwarf_selected">
                         </td>
-                       <td><button type="button" class="btn btn-block btn-danger" id="dwarves">Dwarves</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="dwarves">Dwarves</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="radio" name="raceRadio" id="elf_selected">
                         </td>
-                        <td><button type="button" class="btn btn-block btn-danger" id="elves">Elves</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="elves">Elves</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="radio" name="raceRadio" id="halfling_selected">
                         </td>
-                        <td><button type="button" class="btn btn-block btn-danger" id="halflings">Halflings</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="halflings">Halflings</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="radio" name="raceRadio" id="human_selected">
                         </td>
-                        <td><button type="button" class="btn btn-block btn-danger" id="humans">Humans</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="humans">Humans</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -39,19 +46,25 @@
                         <td>
                             <input type="radio" name="classRadio" id="cleric_selected">
                         </td>
-                       <td><button type="button" class="btn btn-block btn-danger" id="cleric">Cleric</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="cleric">Cleric</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="radio" name="classRadio" id="fighter_selected">
                         </td>
-                        <td><button type="button" class="btn btn-block btn-danger" id="fighter">Fighter</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="fighter">Fighter</button>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <input type="radio" name="classRadio" id="rogue_selected">
                         </td>
-                        <td><button type="button" class="btn btn-block btn-danger" id="rogue">Rogue</button></td>
+                        <td>
+                            <button type="button" class="btn btn-block btn-danger" id="rogue">Rogue</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -65,5 +78,4 @@
     <div class="col-md-3" id="traitScores">
     </div>
 </div>
-<script src="/static/js/character_creation_template.js"></script>
-</body>
+<script src="/static/js/view_character_creation.js" type="text/javascript"></script>

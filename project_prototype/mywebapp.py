@@ -14,20 +14,20 @@ def root():
     return app.send_static_file('index.html')
 
 @app.route("/home", methods=['GET'])
-def test():
+def getHomepage():
     return render_template('home_template.html')
 
-@app.route("/char", methods=['GET'])
+@app.route("/character_creation", methods=['GET'])
 def charPage():
-    return render_template('template_char.html')
+    return render_template('character_creation_template.html')
 
-@app.route("/charDetails", methods=['GET'])
+@app.route("/character_details", methods=['GET'])
 def charDetails():
-    return render_template('char_details.html')
+    return render_template('character_details_template.html')
 
-@app.route("/char_sheet", methods=['GET'])
+@app.route("/character_sheet", methods=['GET'])
 def charSheet():
-    return render_template('char_sheet.html')
+    return render_template('character_sheet_template.html')
 
 @app.route("/character_sheet", methods=['GET'])
 def getCharacterSheetImage():
