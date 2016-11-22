@@ -1,8 +1,6 @@
 jQuery.extend({
     Controller: function(){
 
-        var pc = new model.Player_Character();
-
         this.load_home = function() {
             $('#mypagediv').empty();
             model.getHome();
@@ -55,8 +53,19 @@ jQuery.extend({
         };
 
         this.save_details = function(){
+            model.setChar_name = $("#char_name").val();
+            model.setPlayer_name = $("#player_name").val();
+            model.setAlignment = $("#alignment").val();
+            model.setBackground = $("#background").val();
             
         }
+
+        var pc = model.getPlayerCharacter();
+
+        this.update_char = function(){
+            this.pc = model.getPlayerCharacter();
+        }
+
 
         this.getStandardRoll = function() {
             var roll = [];
@@ -84,42 +93,43 @@ jQuery.extend({
 
         this.removeSelectedAttributeFromList = function() {
             $("#attr option:selected").remove();
-
         };
 
         this.setAttributeValue = function(attribute, value) {
-            console.log("setAttributeValue(" + attribute + "," + value + ")");
+            //console.log("setAttributeValue(" + attribute + "," + value + ")");
             switch (attribute) {
                 case 'strength':
                     $('#strength').text(value);
-                    console.log("Stat: " + value);
-                    pc.strength = value;
+                    model.setStr(value);
                     break;
                 case 'dexterity':
                     $('#dexterity').text(value);
-                    pc.dexterity = value;
+                    model.setDex(value);
                     break;
                 case 'constitution':
                     $('#constitution').text(value);
-                    pc.constitution = value;
+                    model.setCon(value);
                     break;
                 case 'intelligence':
                     $('#intelligence').text(value);
-                    pc.intelligence = value;
+                    model.setInt(value);
                     break;
                 case 'wisdom':
                     $('#wisdom').text(value);
-                    pc.wisdom = value;
+                    model.setWis(value);
                     break;
                 case 'charisma':
                     $('#charisma').text(value);
-                    pc.charisma = value;
+                    model.setCha(value);
                     break;
             }
-        };
-
-       
-
-        
+            this.removeSelectedAttributeFromList();
+            this.removeSelectedScoreFromList();
+            //Ref: http://stackoverflow.com/questions/11039658/how-to-check-whether-a-select-box-is-empty-using-jquery-javascript
+            if( $('#attr').has('option').length == 0){
+                console.log('Empty')
+                $('#button_add').prop('disabled', true);
+            }
+        }; 
     }
 });

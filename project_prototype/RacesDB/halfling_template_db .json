@@ -1,35 +1,35 @@
 var halfling = {
     "race": "halfling",
     "description": [{
-        title: "Small and Practical",
-        body: "The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense. Standing about 3 feet tall, they appear relatively harmless and so have managed to survive for centuries in the shadow of empires and on the edges of wars and political strife. They are inclined to be stout, weighing between 40 and 45 pounds. Halflings’ skin ranges from tan to pale with a ruddy cast, and their hair is usually brown or sandy brown and wavy. They have brown or hazel eyes. Halfling men often sport long sideburns, but beards are rare among them and mustaches even more so. They like to wear simple, comfortable, and practical clothes, favoring bright colors. Halfling practicality extends beyond their clothing. They’re concerned with basic needs and simple pleasures and have little use for ostentation. Even the wealthiest of halflings keep their treasures locked in a cellar rather than on display for all to see. They have a knack for finding the most straightforward solution to a problem, and have little patience for dithering."
+        "title": "Small and Practical",
+        "body": "The diminutive halflings survive in a world full of larger creatures by avoiding notice or, barring that, avoiding offense. Standing about 3 feet tall, they appear relatively harmless and so have managed to survive for centuries in the shadow of empires and on the edges of wars and political strife. They are inclined to be stout, weighing between 40 and 45 pounds. Halflings’ skin ranges from tan to pale with a ruddy cast, and their hair is usually brown or sandy brown and wavy. They have brown or hazel eyes. Halfling men often sport long sideburns, but beards are rare among them and mustaches even more so. They like to wear simple, comfortable, and practical clothes, favoring bright colors. Halfling practicality extends beyond their clothing. They’re concerned with basic needs and simple pleasures and have little use for ostentation. Even the wealthiest of halflings keep their treasures locked in a cellar rather than on display for all to see. They have a knack for finding the most straightforward solution to a problem, and have little patience for dithering."
     }, {
-        title: "Kind and Curious",
-        body: "Halflings are an affable and cheerful people. They cherish the bonds of family and friendship as well as the comforts of hearth and home, harboring few dreams of gold or glory. Even adventurers among them usually venture into the world for reasons of community, friendship, wanderlust, or curiosity. They love discovering new things, even simple things, such as an exotic food or an unfamiliar style of clothing. Halflings are easily moved to pity and hate to see any living thing suffer. They are generous, happily sharing what they have even in lean times."
+        "title": "Kind and Curious",
+        "body": "Halflings are an affable and cheerful people. They cherish the bonds of family and friendship as well as the comforts of hearth and home, harboring few dreams of gold or glory. Even adventurers among them usually venture into the world for reasons of community, friendship, wanderlust, or curiosity. They love discovering new things, even simple things, such as an exotic food or an unfamiliar style of clothing. Halflings are easily moved to pity and hate to see any living thing suffer. They are generous, happily sharing what they have even in lean times."
     }, {
-        title: "Bend Into the Crowd",
-        body: "Halflings are adept at fitting into a community of humans, dwarves, or elves, making themselves valuable and welcome. The combination of their inherent stealth and their unassuming nature helps halflings to avoid unwanted attention.   Halflings work readily with others, and they are loyal to their friends, whether halfling or otherwise. They can display remarkable ferocity when their friends, families, or communities are threatened."
+        "title": "Bend Into the Crowd",
+        "body": "Halflings are adept at fitting into a community of humans, dwarves, or elves, making themselves valuable and welcome. The combination of their inherent stealth and their unassuming nature helps halflings to avoid unwanted attention.   Halflings work readily with others, and they are loyal to their friends, whether halfling or otherwise. They can display remarkable ferocity when their friends, families, or communities are threatened."
     }, {
-        title: "Pastoral Pleasantries",
-        body: "Most halflings live in small, peaceful communities with large farms and well-kept groves. They rarely build kingdoms of their own or even hold much land beyond their quiet shires. They typically don’t recognize any sort of halfling nobility or royalty, instead looking to family elders to guide them. Families preserve their traditional ways despite the rise and fall of empires.   Many halflings live among other races, where the halflings’ hard work and loyal outlook offer them abundant rewards and creature comforts. Some halfling communities travel as a way of life, driving wagons or guiding boats from place to place and maintaining no permanent home."
+        "title": "Pastoral Pleasantries",
+        "body": "Most halflings live in small, peaceful communities with large farms and well-kept groves. They rarely build kingdoms of their own or even hold much land beyond their quiet shires. They typically don’t recognize any sort of halfling nobility or royalty, instead looking to family elders to guide them. Families preserve their traditional ways despite the rise and fall of empires.   Many halflings live among other races, where the halflings’ hard work and loyal outlook offer them abundant rewards and creature comforts. Some halfling communities travel as a way of life, driving wagons or guiding boats from place to place and maintaining no permanent home."
     }, {
-        title: "Exploring Opportunities",
-        body: "Halflings usually set out on the adventurer’s path to defend their communities, support their friends, or explore a wide and wonder-filled world. For them, adventuring is less a career than an opportunity or sometimes a necessity."
+        "title": "Exploring Opportunities",
+        "body": "Halflings usually set out on the adventurer’s path to defend their communities, support their friends, or explore a wide and wonder-filled world. For them, adventuring is less a career than an opportunity or sometimes a necessity."
     }],
-    attributes: {
-        attr: "Dexterity",
-        mod: 2
+    "attributes": {
+        "attr": "Dexterity",
+        "mod": 2
     },
     "Speed": 25,
-    abilities: [{
-        trait: "Lucky",
-        ability: "hen you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
+    "abilities": [{
+        "trait": "Lucky",
+        "ability": "hen you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll."
     }, {
-        trait: "Brave",
-        ability: "You have advantage on saving throws against being frightened."
+        "trait": "Brave",
+        "ability": "You have advantage on saving throws against being frightened."
     }, {
-        trait: "Halfling Nimbleness",
-        ability: "You can move through the space of any creature that is of a size larger than yours."
+        "trait": "Halfling Nimbleness",
+        "ability": "You can move through the space of any creature that is of a size larger than yours."
     }],
-    language: ["Common", "Halfling"]
+    "language": ["Common", "Halfling"]
 }

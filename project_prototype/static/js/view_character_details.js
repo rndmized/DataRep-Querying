@@ -1,4 +1,4 @@
-$("#button_test").click(function(e) {
+$("#button_save").click(function(e) {
     e.preventDefault();
     controller.save_details();
 });
@@ -14,4 +14,9 @@ $("#button_roll").click(function(e) {
 
 });
 
+$('#button_add').click(function(e){
+	//Ref: http://stackoverflow.com/questions/11039658/how-to-check-whether-a-select-box-is-empty-using-jquery-javascript
+	e.preventDefault();
+	controller.setAttributeValue($('#attr').val().toLowerCase(), $('#Score').val());
+});
 

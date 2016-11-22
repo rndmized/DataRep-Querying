@@ -21,7 +21,37 @@ jQuery.extend({
             this.class;
         }
 
-        var pc = new this.Player_Character();
+        this.setBackground = function(background){
+            pc.background = background;
+        }
+
+        this.getBackground = function(){
+            return pc.background;
+        }
+
+        this.setPlayerName = function(player_name){
+            pc.player_name = player_name;
+        }
+
+        this.getPlayerName = function(player_name){
+            return pc.player_name;
+        }
+
+        this.setCharName = function(char_name){
+            pc.char_name = char_name;
+        }
+
+        this.getCharName = function(char_name){
+            return pc.char_name;
+        }
+
+        this.setAlignemnt = function(align){
+            pc.alignment = align;
+        }
+
+        this.getAlignemnt = function(align){
+            return pc.alignment;
+        }
 
         this.setStr = function(str) {
             pc.strength = str;
@@ -61,8 +91,6 @@ jQuery.extend({
             return pc.charisma;
         }
         
-
-
         this.getPlayerRace = function() {
             return pc.race;
         }
@@ -71,6 +99,11 @@ jQuery.extend({
             return pc.class;
         }
 
+        this.getPlayerCharacter = function(){
+            return pc;
+        }
+
+        var pc = new this.Player_Character();
 
         this.load_race = function(id) {
             console.log('load race');
@@ -112,16 +145,6 @@ jQuery.extend({
         };
 
 
-        //lite class
-        this.set_class = function(id) {
-            var data = {
-                name: id
-            }
-            $.get("/class_selected", data, function(resbody) {
-                pc.class = JSON.parse(resbody);
-            });
-        };
-
         //full class
         this.load_class = function(id) {
             var class_type;
@@ -159,6 +182,16 @@ jQuery.extend({
                 });
             });
 
+        };
+
+        //lite class
+        this.set_class = function(id) {
+            var data = {
+                name: id
+            }
+            $.get("/class_selected", data, function(resbody) {
+                pc.class = JSON.parse(resbody);
+            });
         };
 
         this.getHome = function() {
