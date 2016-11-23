@@ -1,6 +1,8 @@
 jQuery.extend({
     Controller: function(){
 
+        var that = this;
+
         this.load_home = function() {
             $('#mypagediv').empty();
             model.getHome();
@@ -49,8 +51,32 @@ jQuery.extend({
             this.setDiv();
             $.get("/character_details", function(resbody) {
                 $('#descDiv').html(resbody);
+                that.load_data();
             });
         };
+
+        this.load_data = function(){
+            $('#attr').empty();
+            $.each(model.getAttributes(), function(i) {
+                $('#attr').append(that.getIdentifiedOptionTag("attribute" + i, model.getAttributes()[i]));
+            });
+            $('#Score').empty();
+            $.each(model.getRolls(), function(i) {
+                $('#Score').append(that.getIdentifiedOptionTag("opt" + i, model.getRolls()[i]));
+            });
+            $("#char_name").val(model.getCharName());
+            $("#player_name").val(model.getPlayerName());
+            $("#alignment").val(model.getAlignment());
+            $("#background").val(model.getBackground());
+            $('#strength').val(model.getStr());
+            $('#dexterity').val(model.getDex());
+            $('#constitution').val(model.getCon());
+            $('#intelligence').val(model.getInt());
+            $('#wisdom').val(model.getWis());
+            $('#charisma').val(model.getCha());
+            $('#button_add').prop('disabled', model.getAddStatus());
+            $('#button_roll').prop('disabled', model.getRolledStatus());
+        }
 
         this.save_details = function(){
             model.setChar_name = $("#char_name").val();
@@ -60,10 +86,16 @@ jQuery.extend({
             
         }
 
-        var pc = model.getPlayerCharacter();
-
-        this.update_char = function(){
-            this.pc = model.getPlayerCharacter();
+        this.roll = function(){
+            console.log('Rolling');
+            for (var i = 0; i < 6; i++) {
+                model.addRoll(this.getStandardRoll());
+            }
+            model.setRolledStatus(true);
+            model.setAddStatus(false);
+            $('#button_add').prop('disabled', model.getAddStatus());
+            $('#button_roll').prop('disabled', model.getRolledStatus());
+            this.load_data();
         }
 
 
@@ -123,6 +155,8 @@ jQuery.extend({
                     model.setCha(value);
                     break;
             }
+            model.removeAttribute(attribute);
+            model.removeRoll(value);
             this.removeSelectedAttributeFromList();
             this.removeSelectedScoreFromList();
             //Ref: http://stackoverflow.com/questions/11039658/how-to-check-whether-a-select-box-is-empty-using-jquery-javascript

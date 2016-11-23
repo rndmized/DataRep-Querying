@@ -1,9 +1,62 @@
 jQuery.extend({
     Model: function() {
-        /**
-         * our local cache of data
-         */
-        var cachedRaces = new Array();
+
+
+
+        var rolled = false;
+        
+        this.setRolledStatus = function(status){
+            rolled = status;
+        }
+
+        this.getRolledStatus = function(){
+            return rolled;    
+        }
+
+        var add = true;
+
+        this.setAddStatus = function(status){
+            add = status;
+        }
+
+        this.getAddStatus = function(){
+            return add;    
+        }
+        
+
+        var attributes = ['Strength','Dexterity','Constitution', 'Intelligence','Wisdom','Charisma'];
+
+        this.removeAttribute = function(attribute){
+            for (var i = 0; i < attributes.length; i++) {
+                console.log(attributes[i]);
+                if(attributes[i].toLowerCase() == attribute){
+                    attr = attributes.splice(i,1);
+                }
+            }
+        }
+
+        this.getAttributes = function(){
+            return attributes;
+        }
+
+        var rolls = new Array();
+
+        this.addRoll = function(value){
+            rolls.push(value);
+        }
+
+        this.removeRoll = function(roll){
+            for (var i = 0; i < attributes.length; i++) {
+                if(rolls[i] == roll){
+                    rolls.splice(i,1);
+                    break;
+                }
+            }
+        }
+
+        this.getRolls = function(){
+            return rolls;
+        }
 
 
         this.Player_Character = function() {
@@ -45,11 +98,11 @@ jQuery.extend({
             return pc.char_name;
         }
 
-        this.setAlignemnt = function(align){
+        this.setAlignment = function(align){
             pc.alignment = align;
         }
 
-        this.getAlignemnt = function(align){
+        this.getAlignment = function(){
             return pc.alignment;
         }
 
@@ -99,10 +152,6 @@ jQuery.extend({
             return pc.class;
         }
 
-        this.getPlayerCharacter = function(){
-            return pc;
-        }
-
         var pc = new this.Player_Character();
 
         this.load_race = function(id) {
@@ -140,7 +189,7 @@ jQuery.extend({
                 name: id
             }
             $.get("/race_selected", data, function(resbody) {
-                pc.race = JSON.parse(resbody);
+                this.pc.race = JSON.parse(resbody);
             });
         };
 
@@ -190,7 +239,7 @@ jQuery.extend({
                 name: id
             }
             $.get("/class_selected", data, function(resbody) {
-                pc.class = JSON.parse(resbody);
+                this.pc.class = JSON.parse(resbody);
             });
         };
 
