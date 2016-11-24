@@ -1,59 +1,53 @@
 jQuery.extend({
     Controller: function(){
-
+        //Reference to this
         var that = this;
 
+        //Calls model to render Home in browser.
         this.load_home = function() {
             $('#mypagediv').empty();
             model.getHome();
         };
-
+        //Calls model to render Character creation page.
         this.load_character_creation = function() {
-            console.log('load_character_creation');
-            $.get("/character_creation", function(resbody) {
-                $('#mypagediv').html(resbody);
-            });
+            model.load_character_creation();
         };
-
+        //Call model to render race page.
         this.load_race = function(id) {
-            console.log('load_race');
             this.setDiv();
             model.load_race(id);
         };
 
+        //Call model to set race for current player character.
         this.set_race = function(id) {
-            console.log('setRace');
             model.set_race(id);
         };
-
+        //Call model to set class for current player character.
         this.set_class = function(id) {
             console.log('setClass');
             model.set_class(id);
         };
-
-        
+        //Call model to render class page.
         this.load_class = function(id) {
             this.setDiv();
             console.log('printClass');
             model.load_class(id);
         };
-
-
+        //Empties div and add sub-divs.
         this.setDiv = function() {
             $('#infoDiv').empty();
             $('#infoDiv').append('<div class="col-md-7" id="descDiv"> </div>');
             $('#infoDiv').append('<div class="col-md-3" id="traitScores"> </div>');
         }
-
-         this.load_character_sheet = function() {
+        //Calls model to render character sheet.
+        this.load_character_sheet = function() {
             $('#infoDiv').empty();
             $('#infoDiv').append('<div class="col-md-10" id="chat_sheet_div"></div>');
             model.getCharacterSheet();
         };
 
-
+        //Calls model to render details.
         this.load_details = function() {
-            console.log('printDetails');
             this.setDiv();
             $.get("/character_details", function(resbody) {
                 $('#descDiv').html(resbody);
@@ -61,6 +55,7 @@ jQuery.extend({
             });
         };
 
+        //Load data from model to fields in the view.
         this.load_data = function(){
             $('#attr').empty();
             $.each(model.getAttributes(), function(i) {
@@ -83,21 +78,19 @@ jQuery.extend({
             $('#button_add').prop('disabled', model.getAddStatus());
             $('#button_roll').prop('disabled', model.getRolledStatus());
         }
-
+        //Save details data in model.
         this.save_details = function(){
             model.setCharName($("#char_name").val());
             model.setPlayerName($("#player_name").val());
             model.setAlignment($("#alignment").val());
             model.setBackground($("#background").val());
-            
         }
-
+        //Add attribute value.
         this.add = function(){
             this.setAttributeValue($('#attr').val().toLowerCase(), $('#Score').val());
         }
-
+        //Get rolls set buttons availability.
         this.roll = function(){
-            console.log('Rolling');
             for (var i = 0; i < 6; i++) {
                 model.addRoll(this.getStandardRoll());
             }
@@ -108,7 +101,7 @@ jQuery.extend({
             this.load_data();
         }
 
-
+        //Returns a standard roll for DnD
         this.getStandardRoll = function() {
             var roll = [];
             var finalRoll = 0;
@@ -125,18 +118,19 @@ jQuery.extend({
             return finalRoll;
         };
 
+        //Return an option tag with a given id and a given value
         this.getIdentifiedOptionTag = function(id, value) {
             return '<option id="' + id + '"">' + value + '</option>';
         };
-
+        //Remove currently selected option from #Score select
         this.removeSelectedScoreFromList = function() {
             $("#Score option:selected").remove();
         };
-
+        //Remove currently selected option from #attr select
         this.removeSelectedAttributeFromList = function() {
             $("#attr option:selected").remove();
         };
-
+        //Set model attribute to a value based on attribute provided
         this.setAttributeValue = function(attribute, value) {
             switch (attribute) {
                 case 'strength':
@@ -175,7 +169,7 @@ jQuery.extend({
             }
         }
 
-
+        //Returns a certain bonus to an attribute based on race.
         this.addBonus = function(attribute){
             var attr = model.getPlayerRace();
             for (var i = 0; i < attr.attributes.length; i++) {
@@ -185,11 +179,12 @@ jQuery.extend({
             }
             return 0;
         }
-
+        //Returns a bonus of an attribute based on the attribute value.
         this.getBonus = function(attribute){
             
         }
-
+        
+        //Get data from model to draw elements on canvas.
         this.drawCharacterSheet = function(){
             var canvas = document.getElementById("canvas");
             // Set the canvas up for drawing in 2D.

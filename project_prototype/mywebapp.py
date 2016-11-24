@@ -3,7 +3,6 @@ from flask_pymongo import PyMongo
 
 app = Flask('dnd5e')
 
-
 # connect to a MongoDB database.
 app.config['MONGO_DBNAME'] = 'dnd5e'
 app.config['MONGO_URI'] ='mongodb://guest:guest@ds157187.mlab.com:57187/dnd5e'
@@ -68,8 +67,6 @@ def returnClassSelected():
 	del class_id['description']
 	del class_id['_id']
 	return json.dumps(class_id)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)

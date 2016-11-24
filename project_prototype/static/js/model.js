@@ -1,31 +1,42 @@
 jQuery.extend({
     Model: function() {
 
+        //Calls server to get template, add template to view;
+        this.load_character_creation = function() {
+            $.get("/character_creation", function(resbody) {
+                $('#mypagediv').html(resbody);
+            });
+        };
 
 
+        //Rolled store status of rolled button
         var rolled = false;
         
+        //Set rolled status
         this.setRolledStatus = function(status){
             rolled = status;
         }
-
+        //return rolled status value.
         this.getRolledStatus = function(){
             return rolled;    
         }
-
+        
+        //Add stores status of add button
         var add = true;
 
+        //set Add status 
         this.setAddStatus = function(status){
             add = status;
         }
-
+        //Return add status value 
         this.getAddStatus = function(){
             return add;    
         }
         
-
+        //Array of attribute values
         var attributes = ['Strength','Dexterity','Constitution', 'Intelligence','Wisdom','Charisma'];
 
+        //Remove given attribute from array
         this.removeAttribute = function(attribute){
             for (var i = 0; i < attributes.length; i++) {
                 if(attributes[i].toLowerCase() == attribute){
@@ -34,17 +45,19 @@ jQuery.extend({
                 }
             }
         }
-
+        //Return array of attributes
         this.getAttributes = function(){
             return attributes;
         }
 
+        //Array for rolls storing
         var rolls = new Array();
 
+        //Add roll to array
         this.addRoll = function(value){
             rolls.push(value);
         }
-
+        //Remove a value from array.
         this.removeRoll = function(roll){
             for (var i = 0; i < rolls.length; i++) {
                 if(rolls[i] == roll){
@@ -57,11 +70,12 @@ jQuery.extend({
             }
         }
 
+        //Return rolls array 
         this.getRolls = function(){
             return rolls;
         }
 
-
+        //Object to store values related to a Character Player in DnD
         this.Player_Character = function() {
             this.char_name = "";
             this.alignment = "";
@@ -77,6 +91,7 @@ jQuery.extend({
             this.class = null;
         }
 
+        //Setters & Getters for pc(player character) values
         this.setBackground = function(background){
             pc.background = background;
         }
@@ -154,9 +169,12 @@ jQuery.extend({
         this.getPlayerClass = function() {
             return pc.class;
         }
+        /* End of Getters and Setters for Player Character values */
 
+        //Instance of Player Character
         var pc = new this.Player_Character();
 
+        //Get Race from server based on id and generate html code based on it. 
         this.load_race = function(id) {
             var race;
             var data = {
@@ -186,6 +204,7 @@ jQuery.extend({
             });
         }
 
+        //Get race from server and set pc value to it.
         this.set_race = function(id) {
             var data = {
                 name: id
@@ -196,7 +215,7 @@ jQuery.extend({
         };
 
 
-        //full class
+        //Get Class from server based on id and generate html code based on it. 
         this.load_class = function(id) {
             var class_type;
             var data = {
@@ -235,7 +254,7 @@ jQuery.extend({
 
         };
 
-        //lite class
+        //Get race from server and set pc value to it.
         this.set_class = function(id) {
             var data = {
                 name: id
@@ -245,15 +264,16 @@ jQuery.extend({
             });
         };
 
+        //Get Home from server and render it.
         this.getHome = function() {
             $.get("/home", function(home) {
                 $('#mypagediv').html(home);
             });
         }
 
-
+        //Image for Character sheet
         var img = new Image();
-        
+        //Get character sheet from server and set value to resource.
         this.getCharacterSheet = function(){
             $.get("/character_sheet", function(resbody) {
                 $('#chat_sheet_div').html(resbody);
@@ -261,12 +281,9 @@ jQuery.extend({
             img.src = img.src = "/static/assets/char_sheet.png";
         
         }
+        //Return image
         this.getImage = function(){
             return img;
         }
-
-
-
-
     }
 });
