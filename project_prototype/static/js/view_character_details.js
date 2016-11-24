@@ -10,6 +10,6 @@ $("#button_roll").click(function(e) {
 
 $('#button_add').click(function(e){
 	e.preventDefault();
-	controller.setAttributeValue($('#attr').val().toLowerCase(), $('#Score').val());
+	controller.add();
 });
 

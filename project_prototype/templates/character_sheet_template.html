@@ -1,47 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <body>
     <div class="container">
         <canvas id="canvas" height="1052" width="744" style="border:1px solid black;"></canvas>
     </div>
-    <script type="text/javascript">
-        /*var img = new Image();
-        img.src = "/static/assets/char_sheet.png";*/
-        var canvas = document.getElementById("canvas");
-        // Set the canvas up for drawing in 2D.
-        var ctx = canvas.getContext("2d");
-        //Draw Character Sheet on canvas
-        ctx.drawImage(img, 0, 0);
-        //Draw name on canvas
-        ctx.font = "20px Arial";
-        ctx.fillText(pc.char_name,55,122);
-        ctx.font = "15px Arial";
-        //Draw race on canvas
-        ctx.fillText(pc.race.race.toUpperCase(),335,135);
-        //Draw class on canvas
-        ctx.fillText(pc.class.class.toUpperCase(),335,100);
-        //Draw Background
-        ctx.fillText(pc.background,475,100);
-        //Draw Alignment
-        ctx.fillText(pc.alignment,475,135);
-        //Draw Player Name
-        ctx.fillText(pc.player_name,595,100);
-        //Draw Speed
-        ctx.font = "25px Arial";
-        ctx.fillText(pc.race.Speed,430,230);
-        //Draw Features and Traits on canvas
-        ctx.font = "10px Arial";
-        $.each(pc.race.abilities,function(i){
-            ctx.fillText(pc.race.abilities[i].trait.toUpperCase(), 510, 505 + (13 *(i + 1)));
-        })
-        $.each(pc.class.levelTable[1].features,function(i){
-            ctx.fillText(pc.class.levelTable[1].features[i].toUpperCase(), 510, 505 + (13 * pc.race.abilities.length + (13 *(i + 1))));
-        })
-
-
-
-    </script>
+    <script src="/static/js/view_character_sheet.js" type="text/javascript"></script>
 </body>
-
 </html>

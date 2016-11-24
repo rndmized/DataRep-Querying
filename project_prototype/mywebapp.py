@@ -29,9 +29,9 @@ def charDetails():
 def charSheet():
     return render_template('character_sheet_template.html')
 
-@app.route("/character_sheet", methods=['GET'])
+@app.route("/character_sheet_image", methods=['GET'])
 def getCharacterSheetImage():
-	resp = flask.make_response(send_from_directory('static',filename='/assets/char_sheet.png'))
+	resp = make_response(send_from_directory('static',filename='/assets/char_sheet.png'))
     	return resp 
 
 @app.route("/race", methods=['GET'])

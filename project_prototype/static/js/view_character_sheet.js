@@ -1,0 +1,5 @@
+$(function() {
+    controller.drawCharacterSheet();
+});
+        
+

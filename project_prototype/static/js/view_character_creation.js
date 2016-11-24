@@ -1,6 +1,10 @@
+$(function() {
+    console.log('loading details')
+    controller.load_details();
+});
+
 $("#details").click(function(e) {
     e.preventDefault();
-    console.log('details');
     controller.load_details();
 
 });
@@ -66,14 +70,8 @@ $("#rogue").click(function(e) {
 
 });
 
-
 $("#char_sheet").click(function(e) {
-    $.get("/char_sheet", function(resbody) {
-        $('#infoDiv').empty();
-        $('#infoDiv').append('<div class="col-md-10" id="chat_sheet_div"></div>');
-        $('#chat_sheet_div').html(resbody);
-
-    });
+    controller.load_character_sheet();
 });
 
 

@@ -28,8 +28,8 @@ jQuery.extend({
 
         this.removeAttribute = function(attribute){
             for (var i = 0; i < attributes.length; i++) {
-                console.log(attributes[i]);
                 if(attributes[i].toLowerCase() == attribute){
+                    console.log(attributes[i]);
                     attr = attributes.splice(i,1);
                 }
             }
@@ -46,11 +46,14 @@ jQuery.extend({
         }
 
         this.removeRoll = function(roll){
-            for (var i = 0; i < attributes.length; i++) {
+            for (var i = 0; i < rolls.length; i++) {
                 if(rolls[i] == roll){
-                    rolls.splice(i,1);
-                    break;
-                }
+                    var rollrem = rolls.splice(i, 1);
+                    if(rolls.length < 1){
+                        this.setAddStatus(true);
+                    }
+                    break; 
+                } 
             }
         }
 
@@ -60,18 +63,18 @@ jQuery.extend({
 
 
         this.Player_Character = function() {
-            this.char_name;
-            this.alignment;
-            this.player_name;
-            this.background;
-            this.strength;
-            this.dexterity;
-            this.constitution;
-            this.intelligence;
-            this.wisdom;
-            this.charisma;
-            this.race;
-            this.class;
+            this.char_name = "";
+            this.alignment = "";
+            this.player_name = "";
+            this.background = "";
+            this.strength = 0;
+            this.dexterity = 0;
+            this.constitution = 0;
+            this.intelligence = 0;
+            this.wisdom = 0;
+            this.charisma = 0;
+            this.race = null;
+            this.class = null;
         }
 
         this.setBackground = function(background){
@@ -155,7 +158,6 @@ jQuery.extend({
         var pc = new this.Player_Character();
 
         this.load_race = function(id) {
-            console.log('load race');
             var race;
             var data = {
                 name: id
@@ -189,7 +191,7 @@ jQuery.extend({
                 name: id
             }
             $.get("/race_selected", data, function(resbody) {
-                this.pc.race = JSON.parse(resbody);
+                pc.race = JSON.parse(resbody);
             });
         };
 
@@ -239,7 +241,7 @@ jQuery.extend({
                 name: id
             }
             $.get("/class_selected", data, function(resbody) {
-                this.pc.class = JSON.parse(resbody);
+                pc.class = JSON.parse(resbody);
             });
         };
 
@@ -248,6 +250,21 @@ jQuery.extend({
                 $('#mypagediv').html(home);
             });
         }
+
+
+        var img = new Image();
+        
+        this.getCharacterSheet = function(){
+            $.get("/character_sheet", function(resbody) {
+                $('#chat_sheet_div').html(resbody);
+            });
+            img.src = img.src = "/static/assets/char_sheet.png";
+        
+        }
+        this.getImage = function(){
+            return img;
+        }
+
 
 
 
