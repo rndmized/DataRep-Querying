@@ -1,3 +1,5 @@
+/*This is the model. The place where the data "lives". It is as well the interface between the server and the view, managed by the controller.*/
+
 jQuery.extend({
     Model: function() {
 

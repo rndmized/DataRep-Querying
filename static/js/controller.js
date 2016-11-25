@@ -1,3 +1,5 @@
+/* This is the controller. In the controller resides the logic of the program. It controls the interactions from the view with the model. */
+
 jQuery.extend({
     Controller: function(){
         //Reference to this
@@ -396,7 +398,7 @@ jQuery.extend({
                 ctx.fillText(model.getPlayerClass().hitPoints.base + parseInt(this.getBonus(parseInt(model.getCon()) + parseInt(this.addBonus('constitution')))),325,434);
                 //Draw Languages
                  $.each(model.getPlayerRace().language,function(i){
-                    ctx.fillText(model.getPlayerRace().language[i].toUpperCase(), 42, 781 + (13 * model.getPlayerRace().language.length + (13 *(i + 1))));
+                    ctx.fillText(model.getPlayerRace().language[i].toUpperCase(), 42, 787 + (13 * model.getPlayerRace().language.length + (13 *(i + 1))));
                 })
 
                 //Draw Speed
@@ -416,9 +418,7 @@ jQuery.extend({
                 ctx.fillText(parseInt(model.getInt()),53,511);
                 ctx.fillText(parseInt(model.getWis()),53,600);
                 ctx.fillText(parseInt(model.getCha()),53,690);
-
             }
-
             if(model.getPlayerClass() != null){
                 //Draw class on canvas
                 ctx.font = "10px Arial";
