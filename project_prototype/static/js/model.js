@@ -1,13 +1,27 @@
 jQuery.extend({
     Model: function() {
 
-        //Calls server to get template, add template to view;
-        this.load_character_creation = function() {
-            $.get("/character_creation", function(resbody) {
-                $('#mypagediv').html(resbody);
+        //Calls server to get template. Calls back controller with response when done.
+        this.request_character_creation = function() {
+            var char_creation;
+            //Ajax call to get Character Creation Page
+            $.get("/character_creation", function(response) {
+                char_creation = response;
+            }).done(function(){
+                controller.load_character_creation(char_creation);
             });
-        };
+        }
 
+        //Calls server to get template. Calls back controller with response when done.
+        this.request_details = function(){
+            var char_details;
+            //Ajax call to get Character details Page
+            var getDetails = $.get("/character_details", function(response) {
+                char_details = response;
+            }).done(function(){
+                controller.load_details(char_details)
+            });
+        }
 
         //Rolled store status of rolled button
         var rolled = false;
@@ -38,13 +52,16 @@ jQuery.extend({
 
         //Remove given attribute from array
         this.removeAttribute = function(attribute){
+            //For every attribute in attributes
             for (var i = 0; i < attributes.length; i++) {
+                //if attribute matches the value ins attributes[i]
                 if(attributes[i].toLowerCase() == attribute){
-                    console.log(attributes[i]);
+                    //remove attribute from the array
                     attr = attributes.splice(i,1);
                 }
             }
         }
+
         //Return array of attributes
         this.getAttributes = function(){
             return attributes;
@@ -59,12 +76,18 @@ jQuery.extend({
         }
         //Remove a value from array.
         this.removeRoll = function(roll){
+            //For every element in rolls
             for (var i = 0; i < rolls.length; i++) {
+                //If rolls[i] matches roll
                 if(rolls[i] == roll){
+                    //remove value from array
                     var rollrem = rolls.splice(i, 1);
+                    //If array empties 
                     if(rolls.length < 1){
+                        //Change Add button status to true
                         this.setAddStatus(true);
                     }
+                    //if value matched break the loop
                     break; 
                 } 
             }
@@ -91,7 +114,7 @@ jQuery.extend({
             this.class = null;
         }
 
-        //Setters & Getters for pc(player character) values
+        /* Setters & Getters for pc(player character) values */
         this.setBackground = function(background){
             pc.background = background;
         }
@@ -174,112 +197,101 @@ jQuery.extend({
         //Instance of Player Character
         var pc = new this.Player_Character();
 
-        //Get Race from server based on id and generate html code based on it. 
-        this.load_race = function(id) {
+        //Get Race from server based on id. 
+        this.get_race = function(id) {
+            /* Variable to store JSON */
             var race;
+            /* Data to send to server */
             var data = {
+                /* Set race name (name) = id */
                 name: id
             }
+            //Send ajax get request
             $.get("/race", data, function(resbody) {
+                /* Set race value to response */
                 race = JSON.parse(resbody);
-                $.each(race.description, function(i) {
-                    $('#descDiv').append('<h1 id="' + 'title' + i + '"></h1>');
-                    $('#title' + i).text(race.description[i].title);
-                    $('#descDiv').append('<p id="' + 'desc' + i + '"><>');
-                    $('#desc' + i).text(race.description[i].body);
-                });
-                $.each(race.attributes, function(i) {
-                    $('#traitScores').append('<h4 id="' + 'attribute' + i + '"></h4>');
-                    $('#attribute' + i).text(race.attributes[i].attr);
-                    $('#traitScores').append('<p id="' + 'modifier' + i + '"><>');
-                    $('#modifier' + i).text(0 + race.attributes[i].mod);
-                });
-
-                $.each(race.abilities, function(i) {
-                    $('#traitScores').append('<h3 id="' + 'trait' + i + '"></h3>');
-                    $('#trait' + i).text(race.abilities[i].trait);
-                    $('#traitScores').append('<p id="' + 'ability' + i + '" text-right><>');
-                    $('#ability' + i).text(race.abilities[i].ability);
-                });
+            }).done(function(){
+                /* Call back controller passing the response from the server */
+                controller.load_race(race);
             });
         }
 
         //Get race from server and set pc value to it.
         this.set_race = function(id) {
+            /* Data to send to server */
             var data = {
+                /* Set race name (name) = id */
                 name: id
             }
+            //Send ajax get request
             $.get("/race_selected", data, function(resbody) {
+                 /* Set player character race value to response */
                 pc.race = JSON.parse(resbody);
             });
-        };
+        }
 
 
-        //Get Class from server based on id and generate html code based on it. 
-        this.load_class = function(id) {
+        //Get Class from server based on id. 
+        this.get_class = function(id) {
+            /* Variable to store JSON */
             var class_type;
+            /* Data to send to server */
             var data = {
+                /* Set class name (name) = id */
                 name: id
             }
+            //Send ajax get request
             $.get("/class", data, function(resbody) {
-                $('#descDiv').empty();
-                $('#traitScores').empty();
-                class_type = JSON.parse(resbody);
-                $.each(class_type.description, function(i) {
-                    $('#descDiv').append('<h1 id="' + 'title' + i + '"></h1>');
-                    $('#title' + i).text(class_type.description[i].title);
-                    $('#descDiv').append('<p id="' + 'desc' + i + '"><>');
-                    $('#desc' + i).text(class_type.description[i].body);
-                });
-                $('#traitScores').append('<h2>Proficiencies</h2>');
-                $.each(class_type.proficiencies, function(i) {
-                    $('#traitScores').append('<h4 id="' + 'proficiency' + i + '"></h4>');
-                    $('#proficiency' + i).text(class_type.proficiencies[i].proficiency);
-                    $.each(class_type.proficiencies[i].ability, function(j) {
-                        $('#traitScores').append('<p id="' + 'ability' + i + '_' + j + '"><>');
-                        $('#ability' + i + '_' + j).text(class_type.proficiencies[i].ability[j]);
-                    });
-                });
-                $('#traitScores').append('<h2>Equipment</h2>');
-                $.each(class_type.equipment, function(i) {
-                    $('#traitScores').append('<h3 id="' + 'equipment' + i + '"></h3>');
-                    $('#equipment' + i).text(class_type.equipment[i].equipment_type);
-
-                    $.each(class_type.equipment[i].primary, function(j) {
-                        $('#traitScores').append('<p id="' + 'primary' + i + '_' + j + '"><>');
-                        $('#primary' + i + '_' + j).text(class_type.equipment[i].primary[j]);
-                    });
-                });
+                /* Set class_type value to response */
+                class_type = JSON.parse(resbody);   
+            }).done(function(){
+                /* Call back controller passing the response from the server */
+                controller.load_class(class_type);
             });
-
-        };
+        }
 
         //Get race from server and set pc value to it.
         this.set_class = function(id) {
+            /* Data to send to server */
             var data = {
+                /* Set class name (name) = id */
                 name: id
             }
+            //Send ajax get request
             $.get("/class_selected", data, function(resbody) {
+                /* Set player character class value to response */
                 pc.class = JSON.parse(resbody);
             });
-        };
+        }
 
         //Get Home from server and render it.
-        this.getHome = function() {
+        this.request_home = function() {
+            var home_page;
+            //Send ajax get request
             $.get("/home", function(home) {
-                $('#mypagediv').html(home);
+                //Set response to div
+                home_page = home;
+            }).done(function(){
+                /* Call back controller passing the response from the server */
+                controller.load_home(home_page);
             });
         }
 
         //Image for Character sheet
         var img = new Image();
         //Get character sheet from server and set value to resource.
-        this.getCharacterSheet = function(){
-            $.get("/character_sheet", function(resbody) {
-                $('#chat_sheet_div').html(resbody);
-            });
-            img.src = img.src = "/static/assets/char_sheet.png";
-        
+        this.request_character_sheet = function(){
+            var char_sheet;
+            //Send ajax get request
+            $.get("/character_sheet", function(response) {
+                //Set response to div
+                char_sheet = response;
+            }).done(function(){
+                //Set image source to source
+                img.src = img.src = "/static/assets/char_sheet.png";
+                /* Call back controller passing the response from the server */
+                controller.load_character_sheet(char_sheet);
+            });   
         }
         //Return image
         this.getImage = function(){

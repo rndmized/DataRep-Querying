@@ -1,28 +1,27 @@
 $(function() {
-    console.log('loading details')
     controller.load_details();
 });
 
 $("#details").click(function(e) {
     e.preventDefault();
-    controller.load_details();
+    controller.request_details();
 
 });
 
 //Print Race to html
 $("#elves").click(function(e) {
-    controller.load_race("elf");
+    controller.request_race("elf");
 });
 $("#dwarves").click(function(e) {
-    controller.load_race("dwarf");
+    controller.request_race("dwarf");
 
 });
 $("#halflings").click(function(e) {
-    controller.load_race("halfling");
+    controller.request_race("halfling");
 
 });
 $("#humans").click(function(e) {
-    controller.load_race("human");
+    controller.request_race("human");
 
 });
 
@@ -58,20 +57,20 @@ $("#rogue_selected").click(function(e) {
 
 //Print Classes to html
 $("#cleric").click(function(e) {
-    controller.load_class("cleric");
+    controller.request_class("cleric");
 
 });
 $("#fighter").click(function(e) {
-    controller.load_class("fighter");
+    controller.request_class("fighter");
 
 });
 $("#rogue").click(function(e) {
-    controller.load_class("rogue");
+    controller.request_class("rogue");
 
 });
 
 $("#char_sheet").click(function(e) {
-    controller.load_character_sheet();
+    controller.request_character_sheet();
 });
 
 
