@@ -5,7 +5,7 @@ The module is taught to undergraduate students at [GMIT](http://www.gmit.ie) in 
 The lecturer is [Ian McLoughlin](https://ianmcloughlin.github.io).
 
 ### Project Overview
-I have created a Single-Page Web Application (SPA) that lets users create character sheet or Dungeons and Dragons (the pen and paper game).Initially, I intended to create a full-blown game, but the scope of the project proved to be way to ambitious so I decided to do something more achievable and that I can ue.
+I have created a Single-Page Web Application (SPA) that lets users create character sheet for Dungeons and Dragons (the pen and paper game).Initially, I intended to create a full-blown game, but the scope of the project proved to be way to ambitious so I decided to do something more achievable and that I can use.
 
 The project was guided by the following excerpt from the project instructions:
 >You are required to develop a single-page web application(SPA) written in the programming language Python using the Flask framework. You must devise an idea for a web application, write the software, write documentation explaining how the application works, and write a short user guide for it.
@@ -15,9 +15,11 @@ The application is written using the [Flask](http://flask.pocoo.org/) library in
 Both must be installed to run the project.
 
 I use the [mongodb](https://www.mongodb.com/) package for persistence in the application.
-This must also be installed.
-However, no further configuration our setup is required, as the database is fully contained in the db directory in this repository.
+This must also be installed. In order to use mongo in conjuction with flask it is necessary to install flask-pymongo. I can be installed using pip.
 
+```bash
+$ pip install flask-pymongo
+```
 Once these prerequisites are installed, the application can be run locally:
 ```bash
 $ python mywebapp.py
