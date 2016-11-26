@@ -279,6 +279,19 @@ jQuery.extend({
             });
         }
 
+        //Get About from server and render it.
+        this.request_about = function() {
+            var about_page;
+            //Send ajax get request
+            $.get("/about", function(about) {
+                //Set response to div
+                about_page = about;
+            }).done(function(){
+                /* Call back controller passing the response from the server */
+                controller.load_about(about_page);
+            });
+        }
+
         //Image for Character sheet
         var img = new Image();
         //Get character sheet from server and set value to resource.

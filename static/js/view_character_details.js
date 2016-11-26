@@ -1,3 +1,4 @@
+/* Capture user interaction and fire correspondent function */
 $("#button_save").click(function(e) {
     e.preventDefault();
     controller.save_details();

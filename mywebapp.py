@@ -7,32 +7,36 @@ app = Flask('dnd5e')
 app.config['MONGO_DBNAME'] = 'dnd5e'
 app.config['MONGO_URI'] ='mongodb://guest:guest@ds157187.mlab.com:57187/dnd5e'
 mongo = PyMongo(app)
-
+#serve index
 @app.route("/")
 def root():
     return app.send_static_file('index.html')
-
+#Return home template
 @app.route("/home", methods=['GET'])
 def getHomepage():
     return render_template('home_template.html')
 
+#Return about template
+@app.route("/about", methods=['GET'])
+def getAboutPage():
+    return render_template('about_template.html')
+
+#Return character creation template
 @app.route("/character_creation", methods=['GET'])
 def charPage():
     return render_template('character_creation_template.html')
 
+#Return character details template
 @app.route("/character_details", methods=['GET'])
 def charDetails():
     return render_template('character_details_template.html')
 
+#Return character sheet template
 @app.route("/character_sheet", methods=['GET'])
 def charSheet():
     return render_template('character_sheet_template.html')
 
-@app.route("/character_sheet_image", methods=['GET'])
-def getCharacterSheetImage():
-	resp = make_response(send_from_directory('static',filename='/assets/char_sheet.png'))
-    	return resp 
-
+#Query db and return matching race name, remove attributes and return json
 @app.route("/race", methods=['GET'])
 def returnRace():
 	name = request.args.get('name', '')
@@ -41,7 +45,7 @@ def returnRace():
 	del race['_id']
 	return json.dumps(race)
 
-
+#Query db and return matching race name, remove attributes and return json
 @app.route("/race_selected", methods=['GET'])
 def returnRaceSelected():
 	name = request.args.get('name', '')
@@ -51,6 +55,7 @@ def returnRaceSelected():
 	del race['description']
 	return json.dumps(race)
 
+#Query db and return matching class name, remove attributes and return json
 @app.route("/class", methods=['GET'])
 def returnClass():
 	name = request.args.get('name', '')
@@ -59,6 +64,7 @@ def returnClass():
 	del class_id['_id']
 	return json.dumps(class_id)
 
+#Query db and return matching class name, remove attributes and return json
 @app.route("/class_selected", methods=['GET'])
 def returnClassSelected():
 	name = request.args.get('name', '')
@@ -67,6 +73,6 @@ def returnClassSelected():
 	del class_id['description']
 	del class_id['_id']
 	return json.dumps(class_id)
-
+#Main
 if __name__ == "__main__":
     app.run(debug=True)

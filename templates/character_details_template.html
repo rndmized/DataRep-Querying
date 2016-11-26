@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <div class="col-md-12 container-fluid text-center">
     <div class="col-md-8 container-fluid text-center">
         <form>
@@ -21,6 +22,7 @@
                             </label>
                         </td>
                         <td>
+                            <!-- Select with Alignment options -->
                             <select class="selectpicker btn-block" id="alignment">
                                 <option>Lawful Good</option>
                                 <option>Chaotic Good</option>
@@ -60,6 +62,7 @@
             <table class="table table-condensed">
                 <tbody>
                     <tr>
+                        <!-- Roll button to generate dice rolls -->
                         <button class="button btn-block btn-danger btn-xs" id="button_roll">
                             Roll
                         </button>
@@ -74,6 +77,7 @@
                             </select>
                         </td>
                         <td>
+                            <!-- Add button to add selected options to player stats -->
                             <button class="button btn-block btn-m" disabled="true" id="button_add">
                                 Add
                             </button>
@@ -81,11 +85,13 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- Button to save character's details -->
             <button class="button button-block" id="button_save" type="Submit">
                 Save Details
             </button>
         </form>
     </div>
+    <!-- Display added stats -->
     <div class="col-md-4 container-fluid text-center">
         <table class="table table-condensed">
             <tbody>
@@ -165,4 +171,5 @@
         </table>
     </div>
 </div>
+<!-- view script -->
 <script src="/static/js/view_character_details.js" type="text/javascript"></script>

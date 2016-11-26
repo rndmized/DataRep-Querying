@@ -1,7 +1,9 @@
+//On load
 $(function() {
     controller.load_details();
 });
 
+/* Capture user interaction and fire correspondent function */
 $("#details").click(function(e) {
     e.preventDefault();
     controller.request_details();
@@ -68,7 +70,7 @@ $("#rogue").click(function(e) {
     controller.request_class("rogue");
 
 });
-
+//Load character sheet
 $("#char_sheet").click(function(e) {
     controller.request_character_sheet();
 });

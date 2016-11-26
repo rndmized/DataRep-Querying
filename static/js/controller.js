@@ -5,6 +5,21 @@ jQuery.extend({
         //Reference to this
         var that = this;
 
+
+        //Request about
+        this.request_about = function() {
+            //Empty div
+            $('#mypagediv').empty();
+            //Request home page.
+            model.request_about();
+        };
+
+        //This method is called in response from the model with a response from the server.
+        this.load_about = function(about_page) {
+            //Generate page from about_page
+            $('#mypagediv').html(about_page);
+        };
+
         //Request home
         this.request_home = function() {
             //Empty div
