@@ -20,7 +20,7 @@ However, no further configuration our setup is required, as the database is full
 
 Once these prerequisites are installed, the application can be run locally:
 ```bash
-$ python webapp.py
+$ python mywebapp.py
 ```
 Once the application is running, it can be accessed by pointing your browser at http://127.0.0.1:5000/ .
 
