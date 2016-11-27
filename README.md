@@ -32,19 +32,19 @@ Once the application is running, it will, by default, load the home page explain
 - Home: Will return you to the home page.
 - Character Creation will bring you to the editor itself.
 - About: Small legal text regarding the ownership of dungeons and dragons and its assets and a small explication about the project and who developed it.
-  #### Character Creation.
-    #### Details
-    The first page to load will be details. In details you can do the following:
-      - Name your character.
-      - Choose an alignment from the dropdown.
-      - Set the player's name.
-      - A one or two-words background definition.
-      - Roll the dice and set the values for each attributes from the results. Once a value is assigned there is no way to change it. Each value can be assigned only once. Unlike the previous data this will be save on set.
-    #### Race/Class      
-    Clicking in any race or class will show the description and traits for that specific race/class.
-    Only one race and one class may be selected at one time. They can be changed as many times as you like.
-    #### Character Sheet
-    Clicking on Character Sheet will display the character sheet with the selections made. Every time a change is made you can click on Character Sheet to redo it. You can right-click on the image to save it to your device and print it later.
+#### Character Creation.
+#### Details
+The first page to load will be details. In details you can do the following:
+- Name your character.
+- Choose an alignment from the dropdown.
+- Set the player's name.
+- A one or two-words background definition.
+- Roll the dice and set the values for each attributes from the results. Once a value is assigned there is no way to change it. Each value can be assigned only once. Unlike the previous data this will be save on set.
+#### Race/Class      
+Clicking in any race or class will show the description and traits for that specific race/class.
+Only one race and one class may be selected at one time. They can be changed as many times as you like.
+#### Character Sheet
+Clicking on Character Sheet will display the character sheet with the selections made. Every time a change is made you can lick on Character Sheet to redo it. You can right-click on the image to save it to your device and print it later.
     
 ### Known Bugs
   
