@@ -15,7 +15,7 @@ The application is written using the [Flask](http://flask.pocoo.org/) library in
 Both must be installed to run the project.
 
 I use the [mongodb](https://www.mongodb.com/) package for persistence in the application.
-This must also be installed. In order to use mongo in conjuction with flask it is necessary to install flask-pymongo. I can be installed using pip.
+This must also be installed. In order to use mongo in conjunction with flask it is necessary to install flask-pymongo. It can be installed using pip.
 
 ```bash
 $ pip install flask-pymongo
@@ -26,7 +26,42 @@ $ python mywebapp.py
 ```
 Once the application is running, it can be accessed by pointing your browser at http://127.0.0.1:5000/ .
 
+### How to use the application
+
+Once the application is running, it will, by default, load the home page explaining what the application is for and how to use it. On top of the page, under the DnD Image there is a navigation bar with three different options:
+- Home: Will return you to the home page.
+- Character Creation will bring you to the editor itself.
+- About: Small legal text regarding the ownership of dungeons and dragons and its assets and a small explication about the project and who developed it.
+  #### Character Creation.
+    ##### Details
+    The first page to load will be details. In details you can do the following:
+      - Name your character.
+      - Choose an alignment from the dropdown.
+      - Set the player's name.
+      - A one or two-words background definition.
+      - Roll the dice and set the values for each attributes from the results. Once a value is assigned there is no way to change it. Each value can be assigned only once. Unlike the previous data this will be save on set.
+    ##### Race/Class      
+    Clicking in any race or class will show the description and traits for that specific race/class.
+    Only one race and one class may be selected at one time. They can be changed as many times as you like.
+    ##### Character Sheet
+    Clicking on Character Sheet will display the character sheet with the selections made. Every time a change is made you can click on Character Sheet to redo it. You can right-click on the image to save it to your device and print it later.
+    
+### Known Bugs
+  
+  - Sometimes Character Sheet doesn't load the image the first time. Clicking a second times loads the image.
+  
 ### Architecture
-This web application runs in [Python 3](https://www.python.org) using the [Flask](http://flask.pocoo.org/) web micro-framework and uses mongoDB as a database.
+This web application runs in [Python 3](https://www.python.org) using the [Flask](http://flask.pocoo.org/) web micro-framework, javascript using JQuery and uses mongoDB as a database.
 Python 3 and Flask were requirements for the project, but mongoDB was selected by its ease of use.
+
+This web application follows the MVC principles:
+- The view sends the controller the orded.
+- The controller manages the logic of the application, requesting data from the model when needed.
+- The model stores the data and requests it from the database when needed.
+
+
+### Final Thoughts
+
+  - I wrote the code trying to implement the different functionalities, without any regard for the structure. It took me a while to restructure all the code to fit MVC. A bit more of design upfront in that aspect would have been better.
+
 
