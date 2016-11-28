@@ -13,10 +13,10 @@ var elf = {
         "title": "Exploration and Adventure"
         , "body": "Elves take up adventuring out of wanderlust. Since they are so long-lived, they can enjoy centuries of exploration and discovery. They dislike the pace of human society, which is regimented from day to day but constantly changing over decades, so they find careers that let them travel freely and set their own pace. Elves also enjoy exercising their martial prowess or gaining greater magical power, and adventuring allows them to do so. Some might join with rebels fighting against oppression, and others might become champions of moral causes."
     }]
-    , "attributes": {
+    , "attributes": [{
         "attr": "Dexterity"
         , "mod": 2
-    }
+    }]
     , "Speed": 30
     , "abilities": [{
         "trait": "Darkvision"

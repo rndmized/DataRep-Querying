@@ -16,10 +16,10 @@ var halfling = {
         "title": "Exploring Opportunities",
         "body": "Halflings usually set out on the adventurer’s path to defend their communities, support their friends, or explore a wide and wonder-filled world. For them, adventuring is less a career than an opportunity or sometimes a necessity."
     }],
-    "attributes": {
+    "attributes": [{
         "attr": "Dexterity",
         "mod": 2
-    },
+    }],
     "Speed": 25,
     "abilities": [{
         "trait": "Lucky",
