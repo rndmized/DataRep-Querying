@@ -74,8 +74,9 @@ This web application follows the MVC principles:
 - The model stores the data and requests it from the database when needed.
 
 
-### Final Thoughts
+### Final Thoughts & General Info
 
   - I wrote the code trying to implement the different functionalities, without any regard for the structure. It took me a while to restructure all the code to fit MVC. A bit more of design upfront in that aspect would have been better.
+  - ClassesDB and RacesDB contain single elements of each class for templating purposes. Files not required for application running.
 
 
