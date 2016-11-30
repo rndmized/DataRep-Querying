@@ -18,11 +18,18 @@ I use the [mongodb](https://www.mongodb.com/) package for persistence in the app
 This must also be installed. In order to use mongo in conjunction with flask it is necessary to install flask-pymongo. It can be installed using pip.
 
 ```bash
-$ pip install flask-pymongo
+$ pip install flask_pymongo
+```
+
+Also the database is required. By default the database in this app is hosted on the cloud at [mLab](https://mlab.com/).
+A script has been added to generate the database locally if required. To change where the application looks for the database you only have to change it in the python file (It is explained in the comments). To run the scrip simply type:
+
+```bash
+$ mongo setup_db.js
 ```
 Once these prerequisites are installed, the application can be run locally:
 ```bash
-$ python mywebapp.py
+$ python dndCC.py
 ```
 Once the application is running, it can be accessed by pointing your browser at http://127.0.0.1:5000/ .
 
