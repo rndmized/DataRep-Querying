@@ -5,6 +5,8 @@ app = Flask('dnd5e')
 
 # connect to a MongoDB database.
 app.config['MONGO_DBNAME'] = 'dnd5e'
+#app.config['MONGO_URI'] ='mongodb://localhost:27017/dnd5e'
+#Uncomment line avobe and comment line below to connect to a local db or the other way around to connect the cloud db.
 app.config['MONGO_URI'] ='mongodb://guest:guest@ds157187.mlab.com:57187/dnd5e'
 mongo = PyMongo(app)
 #serve index
